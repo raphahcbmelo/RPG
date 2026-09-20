@@ -1,0 +1,673 @@
+<style>
+    .gerador-container { display: flex; flex-direction: column; height: 100%; width: 100%; font-size: 14px; }
+    
+    .sticky-tabs { flex: 0 0 auto; display: flex; background-color: var(--bg-parchment); border-bottom: 2px solid var(--border-wood); box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 100; }
+    .tab-btn { flex: 1; padding: 12px 0; text-align: center; background: transparent; color: var(--text-muted); border: none; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
+    .tab-btn.active { color: var(--text-dark); border-bottom: 3px solid var(--border-wood); background: rgba(139, 90, 43, 0.1); }
+
+    .content-wrapper { flex: 1 1 auto; overflow-y: auto; padding: 10px; position: relative; }
+    .tab-content { display: none; height: 100%; animation: fadeIn 0.2s ease-in; }
+    .tab-content.active { display: flex; flex-direction: column; }
+    
+    .section-title { font-size: 1.1rem; font-weight: bold; color: var(--border-wood); border-bottom: 2px solid var(--border-wood); margin-bottom: 10px; padding-bottom: 4px; text-transform: uppercase; flex: 0 0 auto; }
+
+    .input-title { width: 100%; background: transparent; border: none; border-bottom: 2px solid var(--border-wood); color: var(--text-dark); font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; outline: none; text-transform: uppercase; text-align: center; font-family: 'Georgia', serif; }
+    .input-subtitle { width: 100%; background: transparent; border: none; border-bottom: 1px dashed var(--text-muted); color: var(--text-muted); font-size: 0.9rem; outline: none; text-transform: uppercase; text-align: center; font-family: 'Georgia', serif; margin-bottom: 15px; }
+    .input-title::placeholder, .input-subtitle::placeholder { color: #bcaaa4; }
+
+    .art-frame { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-paper); border: 2px solid var(--border-wood); border-radius: 8px; margin-bottom: 10px; overflow: hidden; position: relative; min-height: 300px; }
+    .sprite-viewer { width: 100%; height: 100%; background-size: 200% 100%; background-position: 0% 0%; background-repeat: no-repeat; transition: background-position 0.3s ease; }
+    .art-controls { display: flex; justify-content: space-between; width: 100%; padding: 10px; background: var(--bg-parchment); border-top: 1px solid var(--border-light); flex: 0 0 auto; }
+    .btn-art { background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px 15px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; }
+
+    .form-group { margin-bottom: 10px; flex: 0 0 auto; }
+    .form-group label { display: block; font-size: 0.8rem; color: var(--border-wood); font-weight: bold; margin-bottom: 4px; text-transform: uppercase; }
+    .form-control { width: 100%; background: #fff; border: 1px solid var(--border-light); color: var(--text-dark); padding: 8px; border-radius: 4px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    .form-control:focus { border-color: var(--border-wood); }
+    textarea.form-control { resize: none; height: 60px; }
+
+    .points-counter { flex: 0 0 auto; text-align: center; font-size: 1.1rem; font-weight: bold; color: var(--text-dark); margin-bottom: 10px; padding: 8px; border: 2px dashed var(--border-wood); border-radius: 6px; background: var(--bg-paper); }
+    
+    .class-viewer { flex: 1 1 auto; display: flex; flex-direction: column; background: var(--bg-paper); border: 2px solid var(--border-wood); border-radius: 6px; overflow: hidden; box-shadow: 2px 2px 4px rgba(0,0,0,0.1); min-height: 0; }
+    .class-header { flex: 0 0 auto; background: var(--border-wood); padding: 10px; color: #fff; text-align: center; font-weight: bold; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+    .class-desc { flex: 0 0 auto; padding: 8px; font-size: 0.8rem; color: var(--text-muted); text-align: center; border-bottom: 1px solid var(--border-light); font-style: italic; background: #fff; }
+    
+    .skills-list { flex: 1 1 auto; overflow-y: auto; padding: 8px; display: flex; flex-direction: column; gap: 8px; background: var(--bg-paper); }
+    .skill-card { background: #fff; border: 1px solid var(--border-light); border-radius: 4px; padding: 10px; position: relative; cursor: pointer; transition: all 0.2s; }
+    .skill-card.active { border-color: var(--accent-green-dark); background: #e8f5e9; padding-bottom: 32px; border-width: 2px; }
+    .skill-card.locked { opacity: var(--ghost-opacity); pointer-events: none; }
+    .skill-title { font-weight: bold; color: var(--text-dark); margin-bottom: 4px; font-size: 0.9rem; }
+    .skill-card.active .skill-title { color: var(--accent-green-dark); }
+    .skill-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; }
+    .skill-badge { position: absolute; top: 8px; right: 8px; background: var(--accent-green-dark); color: #fff; font-weight: bold; font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; display: none; }
+    .skill-card.active .skill-badge { display: block; }
+    .btn-remove-skill { position: absolute; bottom: 6px; right: 8px; background: var(--danger); color: #fff; border: none; border-radius: 4px; padding: 4px 10px; font-size: 0.7rem; font-weight: bold; cursor: pointer; display: none; }
+    .skill-card.active .btn-remove-skill { display: block; }
+
+    .class-footer { flex: 0 0 auto; display: flex; justify-content: space-between; padding: 8px; background: var(--bg-parchment); border-top: 2px solid var(--border-wood); }
+    .btn-nav-class { flex: 1; background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; cursor: pointer; transition: transform 0.1s; margin: 0 4px; text-transform: uppercase; }
+
+    .profile-grid { flex: 0 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    .btn-profile { background: var(--bg-paper); border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; cursor: pointer; transition: transform 0.1s; }
+    .btn-profile.active { background: var(--border-wood); color: #fff; }
+    .btn-profile.ghost { opacity: var(--ghost-opacity); }
+    
+    .auto-assign-grid { flex: 0 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    .btn-auto { background: #fff; border: 2px solid var(--accent-blue); color: var(--text-dark); padding: 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; cursor: pointer; transition: transform 0.1s; }
+    .btn-auto.active { background: var(--accent-blue); color: #fff; }
+    .btn-auto.ghost { opacity: var(--ghost-opacity); }
+    
+    .sudoku-container { flex: 1 1 auto; overflow-y: auto; }
+    .attr-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg-paper); padding: 8px; border-radius: 4px; margin-bottom: 6px; border: 1px solid var(--border-light); border-left: 4px solid var(--border-wood); }
+    .attr-name { font-weight: bold; width: 40px; color: var(--text-dark); font-size: 0.85rem; }
+    .dice-group { display: flex; gap: 6px; }
+    .btn-die { width: 35px; height: 35px; background: #fff; border: 2px solid var(--border-light); color: var(--text-dark); font-weight: bold; font-size: 0.85rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+    .btn-die.active { background: var(--accent-green); border-color: var(--accent-green-dark); color: #fff; transform: scale(1.1); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    .btn-die.ghost { opacity: var(--ghost-opacity); border-style: dashed; }
+
+    .status-panel { flex: 0 0 auto; display: flex; justify-content: space-around; background: var(--border-wood); padding: 10px 4px; border-radius: 6px; color: #fff; font-weight: bold; font-size: 0.75rem; margin-top: 8px; box-shadow: inset 0 0 8px rgba(0,0,0,0.5); }
+    .status-item { text-align: center; }
+    .status-item span { display: block; color: var(--bg-paper); font-size: 1.1rem; margin-top: 2px; }
+
+    .bottom-bar { flex: 0 0 auto; background: var(--bg-parchment); border-top: 2px solid var(--border-wood); display: flex; padding: 8px; gap: 8px; z-index: 1000; box-shadow: 0 -2px 8px rgba(0,0,0,0.1); }
+    .btn-bottom { flex: 1; padding: 10px 0; font-weight: bold; font-size: 0.8rem; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; transition: transform 0.1s; }
+    .btn-close { flex: 0 0 40px; background: var(--danger); color: #fff; font-size: 1.1rem; border: 2px solid #b71c1c; }
+    .btn-rng { background: var(--bg-paper); color: var(--text-dark); border: 2px solid var(--border-wood); }
+    .btn-generate { background: var(--border-wood); color: #fff; border: 2px solid #5d4037; }
+
+    @media (min-width: 768px) {
+        .sticky-tabs { display: none; }
+        .content-wrapper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 100%; height: 100%; overflow: hidden; padding: 15px; padding-bottom: 70px; }
+        .tab-content { display: flex !important; flex-direction: column; height: 100%; overflow-y: auto; padding-right: 5px; }
+        .bottom-bar { position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px 20px; justify-content: center; }
+        .btn-bottom { max-width: 200px; }
+    }
+</style>
+
+<div class="gerador-container">
+    <div class="sticky-tabs">
+        <button class="tab-btn active btn-tactile" onclick="openTab('tab-arte')">Arte</button>
+        <button class="tab-btn btn-tactile" onclick="openTab('tab-lore')">Lore</button>
+        <button class="tab-btn btn-tactile" onclick="openTab('tab-habilidades')">Habilidades</button>
+        <button class="tab-btn btn-tactile" onclick="openTab('tab-atributos')">Atributos</button>
+    </div>
+
+    <div class="content-wrapper">
+        
+        <div id="tab-arte" class="tab-content active">
+            <div class="section-title">Identificação & Arte</div>
+            <input type="text" id="char-name" class="input-title" placeholder="NOME DO PERSONAGEM">
+            <input type="text" id="char-title" class="input-subtitle" placeholder="TÍTULO (OPCIONAL)">
+            
+            <div class="art-frame">
+                <div id="sprite-view" class="sprite-viewer" style="background-image: url('../media/001.jpg');"></div>
+            </div>
+            <div class="art-controls">
+                <button class="btn-art btn-tactile" onclick="acaoBotao(() => changeGender())">Gênero ⭤</button>
+                <button class="btn-art btn-tactile" onclick="acaoBotao(() => changeOutfit())">Roupa ❯</button>
+            </div>
+        </div>
+
+        <div id="tab-lore" class="tab-content">
+            <div class="section-title">Lore do Personagem</div>
+            <div style="overflow-y: auto; padding-right: 5px; flex: 1;">
+                <div class="form-group">
+                    <label>Gênero / Pronomes</label>
+                    <input type="text" id="lore-gender" class="form-control" placeholder="Como o personagem se identifica?">
+                </div>
+                <div class="form-group">
+                    <label>Quem? (Identidade)</label>
+                    <input type="text" id="lore-identity" class="form-control" placeholder="Ex: Cavaleiro Exilado do Império">
+                </div>
+                <div class="form-group">
+                    <label>Onde? (Origem)</label>
+                    <input type="text" id="lore-origin" class="form-control" placeholder="De qual reino ou vila você veio?">
+                </div>
+                <div class="form-group">
+                    <label>Por que? (Tema)</label>
+                    <select id="lore-theme" class="form-control">
+                        <option value="" disabled selected>Escolha o que te move...</option>
+                        <option value="Ambição">Ambição</option>
+                        <option value="Culpa">Culpa</option>
+                        <option value="Dever">Dever</option>
+                        <option value="Esperança">Esperança</option>
+                        <option value="Justiça">Justiça</option>
+                        <option value="Misericórdia">Misericórdia</option>
+                        <option value="Vingança">Vingança</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Como? (Treinamento)</label>
+                    <textarea id="lore-training" class="form-control" placeholder="Como você aprendeu a lutar ou usar magia?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Quando? (O Chamado)</label>
+                    <textarea id="lore-calling" class="form-control" placeholder="Qual evento fez você sair de casa e virar herói?"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-habilidades" class="tab-content">
+            <div class="section-title">Classes & Habilidades</div>
+            <div class="points-counter">PONTOS RESTANTES: <span id="points-left">5</span></div>
+            
+            <div class="class-viewer">
+                <div class="class-header" id="cv-name">CARREGANDO...</div>
+                <div class="class-desc" id="cv-desc">Aguarde o banco de dados.</div>
+                <div class="skills-list" id="cv-skills"></div>
+                <div class="class-footer">
+                    <button class="btn-nav-class btn-tactile" onclick="acaoBotao(() => navigateClass(-1))">❮ Anterior</button>
+                    <button class="btn-nav-class btn-tactile" onclick="acaoBotao(() => navigateClass(1))">Próxima ❯</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-atributos" class="tab-content">
+            <div class="section-title">Atributos Base</div>
+            
+            <div class="profile-grid">
+                <button class="btn-profile btn-tactile" onclick="acaoBotao(() => selectProfile([8,8,8,8], this))">O Faz-Tudo<br>(d8, d8, d8, d8)</button>
+                <button class="btn-profile btn-tactile" onclick="acaoBotao(() => selectProfile([10,8,8,6], this))">O Médio<br>(d10, d8, d8, d6)</button>
+                <button class="btn-profile btn-tactile" onclick="acaoBotao(() => selectProfile([10,10,6,6], this))">O Especializado<br>(d10, d10, d6, d6)</button>
+                <button class="btn-profile btn-tactile" onclick="acaoBotao(() => selectProfile([12,8,6,6], this))">Super Especializado<br>(d12, d8, d6, d6)</button>
+            </div>
+
+            <div class="auto-assign-grid" id="auto-assign-box" style="display: none;">
+                <button class="btn-auto btn-tactile" id="focus-hp" onclick="acaoBotao(() => autoAssign('hp'))">❤️ Foco Vida</button>
+                <button class="btn-auto btn-tactile" id="focus-mp" onclick="acaoBotao(() => autoAssign('mp'))">✨ Foco Magia</button>
+                <button class="btn-auto btn-tactile" id="focus-combat" onclick="acaoBotao(() => autoAssign('combat'))">⚔️ Foco Combate</button>
+                <button class="btn-auto btn-tactile" id="focus-support" onclick="acaoBotao(() => autoAssign('support'))">🧠 Foco Suporte</button>
+            </div>
+
+            <div class="sudoku-container" id="dice-sudoku-container" style="display: none;"></div>
+
+            <div class="status-panel">
+                <div class="status-item">HP Máx<span id="val-hp">-</span></div>
+                <div class="status-item">MP Máx<span id="val-mp">-</span></div>
+                <div class="status-item">Inv (IP)<span id="val-ip">6</span></div>
+                <div class="status-item">Defesa<span id="val-def">-</span></div>
+                <div class="status-item">D. Mag<span id="val-dmag">-</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <button class="btn-bottom btn-close btn-tactile" onclick="acaoBotao(fecharGerador)">X</button>
+        <button class="btn-bottom btn-rng btn-tactile" onclick="acaoBotao(gerarRNG)">🎲 Aleatório</button>
+        <button class="btn-bottom btn-generate btn-tactile" onclick="acaoBotao(gerarFichaAtual)">💾 Gerar Ficha</button>
+    </div>
+</div>
+
+<script>
+    let compendio = { classes: [] };
+    let bibliotecaRNG = {};
+    
+    let state = {
+        pointsLeft: 5,
+        currentClassIndex: 0,
+        classInvestments: {},
+        profileDice: [],
+        assignedDice: { DEX: null, INS: null, MIG: null, WLP: null },
+        artOutfit: 1,
+        artGender: 0 // 0 = Masc (0%), 1 = Fem (100%)
+    };
+
+    async function initGerador() {
+        try {
+            const resComp = await fetch('../data/compendio_fabula.json');
+            const dataComp = await resComp.json();
+            compendio = dataComp;
+            
+            const resRNG = await fetch('../data/rng_gerador_jogador.json');
+            bibliotecaRNG = await resRNG.json();
+            
+            renderClassViewer();
+        } catch (e) {
+            console.error("Erro ao carregar JSON. Verifique se está usando Live Server.", e);
+            document.getElementById('cv-name').innerText = "ERRO DE CONEXÃO";
+            document.getElementById('cv-desc').innerText = "Não foi possível carregar os dados. Use um servidor local (Live Server).";
+        }
+    }
+
+    function openTab(tabId) {
+        if (window.innerWidth >= 768) return;
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+
+    function changeOutfit() {
+        state.artOutfit++;
+        if (state.artOutfit > 15) state.artOutfit = 1;
+        updateSprite();
+    }
+
+    function changeGender() {
+        state.artGender = state.artGender === 0 ? 1 : 0;
+        updateSprite();
+    }
+
+    function updateSprite() {
+        const viewer = document.getElementById('sprite-view');
+        const imgName = String(state.artOutfit).padStart(3, '0') + '.jpg';
+        viewer.style.backgroundImage = `url('../media/${imgName}')`;
+        viewer.style.backgroundPosition = state.artGender === 0 ? '0% 0%' : '100% 0%';
+    }
+
+    function renderClassViewer() {
+        if (!compendio.classes || compendio.classes.length === 0) return;
+        
+        const cls = compendio.classes[state.currentClassIndex];
+        document.getElementById('cv-name').innerText = cls.nome;
+        document.getElementById('cv-desc').innerText = cls.descricao;
+        
+        const container = document.getElementById('cv-skills');
+        container.innerHTML = '';
+
+        let spentInThisClass = 0;
+        if (state.classInvestments[cls.id]) {
+            spentInThisClass = Object.values(state.classInvestments[cls.id]).reduce((a, b) => a + b, 0);
+        }
+        
+        let classMaxReached = spentInThisClass >= 4;
+        let globalMaxReached = state.pointsLeft === 0;
+
+        cls.habilidades.forEach(skill => {
+            let currentLevel = 0;
+            if (state.classInvestments[cls.id] && state.classInvestments[cls.id][skill.id]) {
+                currentLevel = state.classInvestments[cls.id][skill.id];
+            }
+            
+            let isActive = currentLevel > 0;
+            let isLocked = (!isActive && globalMaxReached) || 
+                           (!isActive && classMaxReached) || 
+                           (currentLevel >= skill.nivel_maximo && globalMaxReached);
+
+            let html = `
+                <div class="skill-card ${isActive ? 'active' : ''} ${isLocked ? 'locked' : ''}" onclick="addSkill('${cls.id}', '${skill.id}', ${skill.nivel_maximo}, ${classMaxReached})">
+                    <div class="skill-title">${skill.nome}</div>
+                    <div class="skill-desc">${skill.descricao_oficial}</div>
+                    ${isActive ? `<div class="skill-badge">Nv ${currentLevel}/${skill.nivel_maximo}</div>` : ''}
+                    ${isActive ? `<button class="btn-remove-skill btn-tactile" onclick="removeSkill(event, '${cls.id}', '${skill.id}')">REMOVER</button>` : ''}
+                </div>
+            `;
+            container.innerHTML += html;
+        });
+
+        document.getElementById('points-left').innerText = state.pointsLeft;
+        updateStatus();
+    }
+
+    function navigateClass(direction) {
+        if (!compendio.classes || compendio.classes.length === 0) return;
+        let maxIdx = compendio.classes.length - 1;
+        state.currentClassIndex += direction;
+        if (state.currentClassIndex < 0) state.currentClassIndex = maxIdx;
+        if (state.currentClassIndex > maxIdx) state.currentClassIndex = 0;
+        renderClassViewer();
+    }
+
+    function addSkill(classId, skillId, maxLevel, classMaxReached) {
+        if (!state.classInvestments[classId]) state.classInvestments[classId] = {};
+        let current = state.classInvestments[classId][skillId] || 0;
+        
+        if (current < maxLevel && !classMaxReached && state.pointsLeft > 0) {
+            state.classInvestments[classId][skillId] = current + 1;
+            state.pointsLeft--;
+            renderClassViewer();
+        }
+    }
+
+    function removeSkill(event, classId, skillId) {
+        event.stopPropagation();
+        if (state.classInvestments[classId] && state.classInvestments[classId][skillId] > 0) {
+            state.classInvestments[classId][skillId]--;
+            if (state.classInvestments[classId][skillId] === 0) {
+                delete state.classInvestments[classId][skillId];
+            }
+            state.pointsLeft++;
+            renderClassViewer();
+        }
+    }
+
+    function selectProfile(diceArray, btnElement) {
+        document.querySelectorAll('.btn-profile').forEach(b => {
+            b.classList.remove('active');
+            b.classList.add('ghost');
+        });
+        if(btnElement) {
+            btnElement.classList.remove('ghost');
+            btnElement.classList.add('active');
+        }
+        state.profileDice = diceArray.map((val, index) => ({ id: index, val: val }));
+        state.assignedDice = { DEX: null, INS: null, MIG: null, WLP: null };
+        
+        document.getElementById('auto-assign-box').style.display = 'grid';
+        document.getElementById('dice-sudoku-container').style.display = 'block';
+        
+        document.querySelectorAll('.btn-auto').forEach(b => {
+            b.classList.remove('active');
+            b.classList.remove('ghost');
+        });
+        
+        renderSudoku();
+    }
+
+    function renderSudoku() {
+        const container = document.getElementById('dice-sudoku-container');
+        container.innerHTML = '';
+        const attrs = ['DEX', 'INS', 'MIG', 'WLP'];
+        
+        attrs.forEach(attr => {
+            let html = `<div class="attr-row"><div class="attr-name">${attr}</div><div class="dice-group">`;
+            
+            state.profileDice.forEach(die => {
+                let isAssignedHere = state.assignedDice[attr] === die.id;
+                let isAssignedElsewhere = Object.values(state.assignedDice).includes(die.id) && !isAssignedHere;
+                let btnClass = isAssignedHere ? 'active' : (isAssignedElsewhere ? 'ghost' : '');
+                html += `<button class="btn-die btn-tactile ${btnClass}" onclick="assignDie('${attr}', ${die.id})">d${die.val}</button>`;
+            });
+            
+            html += `</div></div>`;
+            container.innerHTML += html;
+        });
+        updateStatus();
+    }
+
+    function assignDie(attr, dieId) {
+        document.querySelectorAll('.btn-auto').forEach(b => {
+            b.classList.remove('active');
+            b.classList.remove('ghost');
+        });
+
+        for (let a in state.assignedDice) {
+            if (state.assignedDice[a] === dieId) state.assignedDice[a] = null;
+        }
+        state.assignedDice[attr] = state.assignedDice[attr] !== dieId ? dieId : null;
+        renderSudoku();
+    }
+
+    function autoAssign(focus) {
+        document.querySelectorAll('.btn-auto').forEach(b => {
+            b.classList.remove('active');
+            b.classList.add('ghost');
+        });
+        document.getElementById(`focus-${focus}`).classList.remove('ghost');
+        document.getElementById(`focus-${focus}`).classList.add('active');
+
+        let sorted = [...state.profileDice].sort((a, b) => b.val - a.val);
+        state.assignedDice = { DEX: null, INS: null, MIG: null, WLP: null };
+        
+        if (focus === 'hp') {
+            state.assignedDice.MIG = sorted[0].id;
+            state.assignedDice.DEX = sorted[1].id;
+            state.assignedDice.WLP = sorted[2].id;
+            state.assignedDice.INS = sorted[3].id;
+        } else if (focus === 'mp') {
+            state.assignedDice.WLP = sorted[0].id;
+            state.assignedDice.INS = sorted[1].id;
+            state.assignedDice.MIG = sorted[2].id;
+            state.assignedDice.DEX = sorted[3].id;
+        } else if (focus === 'combat') {
+            state.assignedDice.DEX = sorted[0].id;
+            state.assignedDice.MIG = sorted[1].id;
+            state.assignedDice.INS = sorted[2].id;
+            state.assignedDice.WLP = sorted[3].id;
+        } else if (focus === 'support') {
+            state.assignedDice.INS = sorted[0].id;
+            state.assignedDice.WLP = sorted[1].id;
+            state.assignedDice.DEX = sorted[2].id;
+            state.assignedDice.MIG = sorted[3].id;
+        }
+        renderSudoku();
+    }
+
+    function updateStatus() {
+        let hp = 5; let mp = 5; let ip = 6;
+        
+        let valMIG = state.assignedDice.MIG !== null ? state.profileDice.find(d => d.id === state.assignedDice.MIG).val : 0;
+        let valWLP = state.assignedDice.WLP !== null ? state.profileDice.find(d => d.id === state.assignedDice.WLP).val : 0;
+        let valDEX = state.assignedDice.DEX !== null ? state.profileDice.find(d => d.id === state.assignedDice.DEX).val : 0;
+        let valINS = state.assignedDice.INS !== null ? state.profileDice.find(d => d.id === state.assignedDice.INS).val : 0;
+
+        hp += (valMIG * 5);
+        mp += (valWLP * 5);
+
+        for (let classId in state.classInvestments) {
+            let cls = compendio.classes.find(c => c.id === classId);
+            if (cls) {
+                hp += cls.beneficios_gratuitos.bonus_hp;
+                mp += cls.beneficios_gratuitos.bonus_mp;
+                ip += cls.beneficios_gratuitos.bonus_ip;
+                if (state.classInvestments[classId]['fortaleza']) {
+                    hp += (state.classInvestments[classId]['fortaleza'] * 3);
+                }
+            }
+        }
+
+        document.getElementById('val-hp').innerText = hp > 5 ? hp : '-';
+        document.getElementById('val-mp').innerText = mp > 5 ? mp : '-';
+        document.getElementById('val-ip').innerText = ip;
+        document.getElementById('val-def').innerText = valDEX > 0 ? valDEX : '-';
+        document.getElementById('val-dmag').innerText = valINS > 0 ? valINS : '-';
+    }
+
+    function fecharGerador() {
+        if(confirm("Deseja fechar o gerador? O progresso não salvo será perdido.")) {
+            if (typeof voltarMenuPrincipal === "function") {
+                voltarMenuPrincipal();
+            } else {
+                alert("Retornando ao Menu Principal...");
+            }
+        }
+    }
+
+    function gerarRNG() {
+        if (!bibliotecaRNG.nomes) {
+            alert("Biblioteca RNG não carregada.");
+            return;
+        }
+
+        if(!document.getElementById('char-name').value) document.getElementById('char-name').value = bibliotecaRNG.nomes[Math.floor(Math.random() * bibliotecaRNG.nomes.length)];
+        if(!document.getElementById('char-title').value) document.getElementById('char-title').value = bibliotecaRNG.titulos[Math.floor(Math.random() * bibliotecaRNG.titulos.length)];
+        if(!document.getElementById('lore-gender').value) document.getElementById('lore-gender').value = bibliotecaRNG.generos[Math.floor(Math.random() * bibliotecaRNG.generos.length)];
+        if(!document.getElementById('lore-identity').value) document.getElementById('lore-identity').value = bibliotecaRNG.identidades[Math.floor(Math.random() * bibliotecaRNG.identidades.length)];
+        if(!document.getElementById('lore-origin').value) document.getElementById('lore-origin').value = bibliotecaRNG.origens[Math.floor(Math.random() * bibliotecaRNG.origens.length)];
+        if(!document.getElementById('lore-training').value) document.getElementById('lore-training').value = bibliotecaRNG.treinamentos[Math.floor(Math.random() * bibliotecaRNG.treinamentos.length)];
+        if(!document.getElementById('lore-calling').value) document.getElementById('lore-calling').value = bibliotecaRNG.chamados[Math.floor(Math.random() * bibliotecaRNG.chamados.length)];
+        
+        const temas = document.getElementById('lore-theme');
+        if(temas.value === "") temas.selectedIndex = Math.floor(Math.random() * (temas.options.length - 1)) + 1;
+
+        if (state.profileDice.length === 0) {
+            const profiles = [[8,8,8,8], [10,8,8,6], [10,10,6,6], [12,8,6,6]];
+            const randomProfile = profiles[Math.floor(Math.random() * profiles.length)];
+            const btns = document.querySelectorAll('.btn-profile');
+            let targetBtn = Array.from(btns).find(b => b.innerText.includes(randomProfile[0]));
+            selectProfile(randomProfile, targetBtn || btns[0]);
+        }
+        
+        let missingAttr = Object.values(state.assignedDice).some(v => v === null);
+        if (missingAttr) {
+            const focuses = ['hp', 'mp', 'combat', 'support'];
+            autoAssign(focuses[Math.floor(Math.random() * focuses.length)]);
+        }
+
+        state.classInvestments = {};
+        state.pointsLeft = 5;
+        let activeClasses = [];
+
+        let loopSafety = 0;
+        while(state.pointsLeft > 0 && loopSafety < 100) {
+            loopSafety++;
+            
+            let cls;
+            if (activeClasses.length === 0 || (Math.random() > 0.5 && activeClasses.length < 3)) {
+                let availableClasses = compendio.classes.filter(c => !activeClasses.includes(c.id));
+                if (availableClasses.length > 0) {
+                    cls = availableClasses[Math.floor(Math.random() * availableClasses.length)];
+                    activeClasses.push(cls.id);
+                    state.classInvestments[cls.id] = {};
+                } else {
+                    cls = compendio.classes.find(c => activeClasses.includes(c.id));
+                }
+            } else {
+                let classId = activeClasses[Math.floor(Math.random() * activeClasses.length)];
+                cls = compendio.classes.find(c => c.id === classId);
+            }
+
+            let spentInClass = Object.values(state.classInvestments[cls.id]).reduce((a,b)=>a+b,0);
+            
+            if (spentInClass >= 4 || (state.pointsLeft === 1 && activeClasses.length === 1)) {
+                continue; 
+            }
+
+            let availableSkills = cls.habilidades.filter(h => (state.classInvestments[cls.id][h.id] || 0) < h.nivel_maximo);
+            if(availableSkills.length === 0) continue;
+            
+            let skill = availableSkills[Math.floor(Math.random() * availableSkills.length)];
+
+            let ptsToAdd = 1;
+            if (Math.random() > 0.5 && state.pointsLeft >= 2 && skill.nivel_maximo >= (state.classInvestments[cls.id][skill.id]||0) + 2 && spentInClass <= 2) {
+                ptsToAdd = 2;
+            }
+
+            state.classInvestments[cls.id][skill.id] = (state.classInvestments[cls.id][skill.id] || 0) + ptsToAdd;
+            state.pointsLeft -= ptsToAdd;
+        }
+        
+        state.currentClassIndex = compendio.classes.findIndex(c => c.id === activeClasses[0]);
+        if(state.currentClassIndex === -1) state.currentClassIndex = 0;
+        renderClassViewer();
+    }
+
+    function gerarFichaAtual() {
+        if (state.pointsLeft > 0 || Object.values(state.assignedDice).some(v => v === null) || !document.getElementById('char-name').value) {
+            gerarRNG();
+        }
+
+        let classesExport = [];
+        for (let classId in state.classInvestments) {
+            let cls = compendio.classes.find(c => c.id === classId);
+            classesExport.push({
+                nome: cls.nome,
+                habilidades: state.classInvestments[classId]
+            });
+        }
+
+        const fichaData = {
+            nome: document.getElementById('char-name').value,
+            titulo: document.getElementById('char-title').value,
+            arte: {
+                roupa: String(state.artOutfit).padStart(3, '0') + '.jpg',
+                genero: state.artGender === 0 ? '0% 0%' : '100% 0%'
+            },
+            lore: {
+                genero: document.getElementById('lore-gender').value,
+                identidade: document.getElementById('lore-identity').value,
+                origem: document.getElementById('lore-origin').value,
+                tema: document.getElementById('lore-theme').value,
+                treinamento: document.getElementById('lore-training').value,
+                chamado: document.getElementById('lore-calling').value
+            },
+            atributos: {
+                DEX: state.profileDice.find(d => d.id === state.assignedDice.DEX).val,
+                INS: state.profileDice.find(d => d.id === state.assignedDice.INS).val,
+                MIG: state.profileDice.find(d => d.id === state.assignedDice.MIG).val,
+                WLP: state.profileDice.find(d => d.id === state.assignedDice.WLP).val
+            },
+            status: {
+                hp: document.getElementById('val-hp').innerText,
+                mp: document.getElementById('val-mp').innerText,
+                ip: document.getElementById('val-ip').innerText,
+                def: document.getElementById('val-def').innerText,
+                dmag: document.getElementById('val-dmag').innerText
+            },
+            classes: classesExport
+        };
+
+        const htmlTemplate = `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha: ${fichaData.nome}</title>
+    <style>
+        body { background: #f4ecd8; color: #3e2723; font-family: 'Georgia', serif; margin: 0; padding: 20px; }
+        .sheet-container { max-width: 1000px; margin: 0 auto; background: #fff9e6; border: 3px solid #8b5a2b; padding: 20px; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); }
+        .header { text-align: center; border-bottom: 2px solid #8b5a2b; padding-bottom: 15px; margin-bottom: 20px; }
+        .header h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; }
+        .header h3 { margin: 5px 0 0 0; color: #795548; font-style: italic; font-weight: normal; }
+        .art-placeholder { width: 150px; height: 150px; border: 2px solid #8b5a2b; margin: 15px auto; border-radius: 50%; background-image: url('../media/${fichaData.arte.roupa}'); background-size: 200% auto; background-position: ${fichaData.arte.genero}; background-repeat: no-repeat; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .grid-layout { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .grid-layout { grid-template-columns: 1fr 1fr 1fr; } }
+        .box { border: 2px solid #d7ccc8; padding: 15px; border-radius: 8px; background: #fff; }
+        .box-title { font-weight: bold; color: #8b5a2b; border-bottom: 1px solid #d7ccc8; margin-bottom: 10px; padding-bottom: 5px; text-transform: uppercase; }
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 4px; }
+        .stat-val { font-weight: bold; color: #388e3c; }
+    </style>
+</head>
+<body>
+    <div class="sheet-container">
+        <div class="header">
+            <h1>${fichaData.nome}</h1>
+            <h3>${fichaData.titulo}</h3>
+            <div class="art-placeholder"></div>
+        </div>
+        <div class="grid-layout">
+            <div class="box">
+                <div class="box-title">Lore & Identidade</div>
+                <div class="stat-row"><span>Gênero:</span> <span>${fichaData.lore.genero}</span></div>
+                <div class="stat-row"><span>Identidade:</span> <span>${fichaData.lore.identidade}</span></div>
+                <div class="stat-row"><span>Origem:</span> <span>${fichaData.lore.origem}</span></div>
+                <div class="stat-row"><span>Tema:</span> <span>${fichaData.lore.tema}</span></div>
+                <p style="font-size: 0.85rem; margin-top: 10px;"><strong>Treinamento:</strong> ${fichaData.lore.treinamento}</p>
+                <p style="font-size: 0.85rem;"><strong>O Chamado:</strong> ${fichaData.lore.chamado}</p>
+            </div>
+            <div class="box">
+                <div class="box-title">Habilidades</div>
+                ${fichaData.classes.map(c => `
+                    <div style="margin-bottom: 10px;">
+                        <strong>${c.nome}</strong>
+                        <ul style="margin: 5px 0 0 20px; font-size: 0.85rem;">
+                            ${Object.entries(c.habilidades).map(([id, lvl]) => `<li>Habilidade ID [${id}] - Nv ${lvl}</li>`).join('')}
+                        </ul>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="box">
+                <div class="box-title">Atributos & Status</div>
+                <div class="stat-row"><span>Destreza (DEX):</span> <span class="stat-val">d${fichaData.atributos.DEX}</span></div>
+                <div class="stat-row"><span>Intuição (INS):</span> <span class="stat-val">d${fichaData.atributos.INS}</span></div>
+                <div class="stat-row"><span>Potência (MIG):</span> <span class="stat-val">d${fichaData.atributos.MIG}</span></div>
+                <div class="stat-row"><span>Vontade (WLP):</span> <span class="stat-val">d${fichaData.atributos.WLP}</span></div>
+                <br>
+                <div class="stat-row"><span>HP Máximo:</span> <span class="stat-val" style="color:#d32f2f;">${fichaData.status.hp}</span></div>
+                <div class="stat-row"><span>MP Máximo:</span> <span class="stat-val" style="color:#64b5f6;">${fichaData.status.mp}</span></div>
+                <div class="stat-row"><span>Inventário (IP):</span> <span class="stat-val">${fichaData.status.ip}</span></div>
+                <div class="stat-row"><span>Defesa:</span> <span class="stat-val">${fichaData.status.def}</span></div>
+                <div class="stat-row"><span>Defesa Mágica:</span> <span class="stat-val">${fichaData.status.dmag}</span></div>
+            </div>
+        </div>
+    </div>
+    <script type="application/json" id="save-state">
+        ${JSON.stringify(fichaData)}
+    <\/script>
+</body>
+</html>`;
+
+        const blob = new Blob([htmlTemplate], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Ficha_${fichaData.nome.replace(/\s+/g, '_')}.html`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    initGerador();
+</script>

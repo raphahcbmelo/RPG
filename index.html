@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fabula Ultima - Sistema</title>
+    <style>
+        :root {
+            --bg-parchment: #f4ecd8;
+            --bg-paper: #fff9e6;
+            --text-dark: #3e2723;
+            --text-muted: #795548;
+            --border-wood: #8b5a2b;
+            --border-light: #d7ccc8;
+            --accent-green: #4caf50;
+            --accent-green-dark: #388e3c;
+            --accent-blue: #2196f3;
+            --danger: #d32f2f;
+            --ghost-opacity: 0.3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; user-select: none; -webkit-tap-highlight-color: transparent; }
+        
+        body { background-color: var(--bg-parchment); color: var(--text-dark); height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+
+        .top-bar { background: var(--border-wood); color: #fff; padding: 15px; text-align: center; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 1000; }
+
+        #app-root { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+
+        /* MENU PRINCIPAL */
+        .main-menu { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; gap: 20px; }
+        .menu-title { font-size: 2rem; color: var(--border-wood); margin-bottom: 20px; text-align: center; border-bottom: 2px solid var(--border-wood); padding-bottom: 10px; }
+        .btn-menu { width: 100%; max-width: 300px; background: var(--bg-paper); border: 3px solid var(--border-wood); color: var(--text-dark); padding: 20px; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: transform 0.1s, box-shadow 0.1s; box-shadow: 4px 4px 0 var(--border-wood); }
+        .btn-menu:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border-wood); }
+        
+        .btn-tactile { transition: transform 0.1s; }
+        .btn-tactile:active { transform: scale(0.95); }
+
+        #loading-screen { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-parchment); z-index: 9999; justify-content: center; align-items: center; flex-direction: column; font-size: 1.5rem; color: var(--border-wood); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">FABULA ULTIMA VTT</div>
+
+    <div id="app-root">
+        <div class="main-menu">
+            <div class="menu-title">PAINEL DO JOGADOR</div>
+            <button class="btn-menu" onclick="acaoBotao(() => loadModule('system/gerador.html'))">⚔️ Gerador de Ficha</button>
+            <button class="btn-menu" onclick="acaoBotao(() => alert('Módulo Minhas Fichas em desenvolvimento.'))">📜 Minhas Fichas</button>
+        </div>
+    </div>
+
+    <div id="loading-screen">
+        <div style="font-size: 3rem; margin-bottom: 10px;">⏳</div>
+        Carregando Módulo...
+    </div>
+
+    <script>
+        function acaoBotao(callback) {
+            setTimeout(callback, 250);
+        }
+
+        async function loadModule(url) {
+            const loading = document.getElementById('loading-screen');
+            const root = document.getElementById('app-root');
+            
+            loading.style.display = 'flex';
+            
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Falha ao carregar o módulo. Você está usando um Live Server?');
+                const html = await response.text();
+                
+                root.innerHTML = html;
+                
+                const scripts = root.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
+            } catch (error) {
+                alert(error.message);
+                root.innerHTML = `<div class="main-menu"><div class="menu-title">ERRO</div><p>${error.message}</p><button class="btn-menu" onclick="location.reload()">Voltar</button></div>`;
+            } finally {
+                setTimeout(() => { loading.style.display = 'none'; }, 300);
+            }
+        }
+
+        function voltarMenuPrincipal() {
+            document.getElementById('app-root').innerHTML = `
+                <div class="main-menu">
+                    <div class="menu-title">PAINEL DO JOGADOR</div>
+                    <button class="btn-menu" onclick="acaoBotao(() => loadModule('system/gerador.html'))">⚔️ Gerador de Ficha</button>
+                    <button class="btn-menu" onclick="acaoBotao(() => alert('Módulo Minhas Fichas em desenvolvimento.'))">📜 Minhas Fichas</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
