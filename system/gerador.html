@@ -1,8 +1,9 @@
+<!-- ARQUIVO: gerador.html (Salve dentro da pasta RPG/system/) -->
 <style>
     .gerador-container { display: flex; flex-direction: column; height: 100%; width: 100%; font-size: 14px; }
     
     .sticky-tabs { flex: 0 0 auto; display: flex; background-color: var(--bg-parchment); border-bottom: 2px solid var(--border-wood); box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 100; }
-    .tab-btn { flex: 1; padding: 12px 0; text-align: center; background: transparent; color: var(--text-muted); border: none; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
+    .tab-btn { flex: 1; padding: 10px 0; text-align: center; background: transparent; color: var(--text-muted); border: none; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
     .tab-btn.active { color: var(--text-dark); border-bottom: 3px solid var(--border-wood); background: rgba(139, 90, 43, 0.1); }
 
     .content-wrapper { flex: 1 1 auto; overflow-y: auto; padding: 10px; position: relative; }
@@ -16,9 +17,9 @@
     .input-title::placeholder, .input-subtitle::placeholder { color: #bcaaa4; }
 
     .art-frame { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-paper); border: 2px solid var(--border-wood); border-radius: 8px; margin-bottom: 10px; overflow: hidden; position: relative; min-height: 300px; }
-    .sprite-viewer { width: 100%; height: 100%; background-size: 200% 100%; background-position: 0% 0%; background-repeat: no-repeat; transition: background-position 0.3s ease; }
+    .sprite-viewer { width: 100%; height: 100%; background-size: 200% 100%; background-position: 0% 0%; background-repeat: no-repeat; transition: background-position 0.3s ease, background-image 0.3s ease; }
     .art-controls { display: flex; justify-content: space-between; width: 100%; padding: 10px; background: var(--bg-parchment); border-top: 1px solid var(--border-light); flex: 0 0 auto; }
-    .btn-art { background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px 15px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; }
+    .btn-art { flex: 1; background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px 15px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; margin: 0 5px; transition: transform 0.1s; }
 
     .form-group { margin-bottom: 10px; flex: 0 0 auto; }
     .form-group label { display: block; font-size: 0.8rem; color: var(--border-wood); font-weight: bold; margin-bottom: 4px; text-transform: uppercase; }
@@ -77,9 +78,9 @@
 
     @media (min-width: 768px) {
         .sticky-tabs { display: none; }
-        .content-wrapper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 100%; height: 100%; overflow: hidden; padding: 15px; padding-bottom: 70px; }
+        .content-wrapper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 100%; height: calc(100vh - 110px); overflow: hidden; padding: 15px; padding-bottom: 90px; }
         .tab-content { display: flex !important; flex-direction: column; height: 100%; overflow-y: auto; padding-right: 5px; }
-        .bottom-bar { position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px 20px; justify-content: center; }
+        .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; padding: 10px 20px; justify-content: center; }
         .btn-bottom { max-width: 200px; }
     }
 </style>
@@ -100,11 +101,11 @@
             <input type="text" id="char-title" class="input-subtitle" placeholder="TÍTULO (OPCIONAL)">
             
             <div class="art-frame">
-                <div id="sprite-view" class="sprite-viewer" style="background-image: url('../media/001.jpg');"></div>
+                <div id="sprite-view" class="sprite-viewer" style="background-image: url('media/001.jpg');"></div>
             </div>
             <div class="art-controls">
-                <button class="btn-art btn-tactile" onclick="acaoBotao(() => changeGender())">Gênero ⭤</button>
-                <button class="btn-art btn-tactile" onclick="acaoBotao(() => changeOutfit())">Roupa ❯</button>
+                <button class="btn-art btn-tactile" onclick="acaoBotao(() => prevArt())">❮ Anterior</button>
+                <button class="btn-art btn-tactile" onclick="acaoBotao(() => nextArt())">Próxima ❯</button>
             </div>
         </div>
 
@@ -156,8 +157,8 @@
                 <div class="class-desc" id="cv-desc">Aguarde o banco de dados.</div>
                 <div class="skills-list" id="cv-skills"></div>
                 <div class="class-footer">
-                    <button class="btn-nav-class btn-tactile" onclick="acaoBotao(() => navigateClass(-1))">❮ Anterior</button>
-                    <button class="btn-nav-class btn-tactile" onclick="acaoBotao(() => navigateClass(1))">Próxima ❯</button>
+                    <button class="btn-nav-class btn-tactile" onclick="acaoBotao(() => navigateClass(-1))">❮ Classe Anterior</button>
+                    <button class="btn-nav-class btn-tactile" onclick="acaoBotao(() => navigateClass(1))">Próxima Classe ❯</button>
                 </div>
             </div>
         </div>
@@ -208,24 +209,26 @@
         classInvestments: {},
         profileDice: [],
         assignedDice: { DEX: null, INS: null, MIG: null, WLP: null },
-        artOutfit: 1,
-        artGender: 0 // 0 = Masc (0%), 1 = Fem (100%)
+        artIndex: 1,
+        artGender: 0 
     };
 
     async function initGerador() {
         try {
-            const resComp = await fetch('../data/compendio_fabula.json');
+            const resComp = await fetch('data/compendio_fabula.json');
+            if (!resComp.ok) throw new Error('compendio_fabula.json não encontrado');
             const dataComp = await resComp.json();
             compendio = dataComp;
             
-            const resRNG = await fetch('../data/rng_gerador_jogador.json');
+            const resRNG = await fetch('data/rng_gerador_jogador.json');
+            if (!resRNG.ok) throw new Error('rng_gerador_jogador.json não encontrado');
             bibliotecaRNG = await resRNG.json();
             
             renderClassViewer();
         } catch (e) {
-            console.error("Erro ao carregar JSON. Verifique se está usando Live Server.", e);
+            console.error("Erro ao carregar JSON.", e);
             document.getElementById('cv-name').innerText = "ERRO DE CONEXÃO";
-            document.getElementById('cv-desc').innerText = "Não foi possível carregar os dados. Use um servidor local (Live Server).";
+            document.getElementById('cv-desc').innerText = "Não foi possível carregar os dados. Verifique os caminhos data/compendio_fabula.json e data/rng_gerador_jogador.json.";
         }
     }
 
@@ -237,22 +240,33 @@
         event.currentTarget.classList.add('active');
     }
 
-    function changeOutfit() {
-        state.artOutfit++;
-        if (state.artOutfit > 15) state.artOutfit = 1;
-        updateSprite();
-    }
-
-    function changeGender() {
-        state.artGender = state.artGender === 0 ? 1 : 0;
-        updateSprite();
-    }
-
     function updateSprite() {
         const viewer = document.getElementById('sprite-view');
-        const imgName = String(state.artOutfit).padStart(3, '0') + '.jpg';
-        viewer.style.backgroundImage = `url('../media/${imgName}')`;
+        const imgName = String(state.artIndex).padStart(3, '0') + '.jpg';
+        viewer.style.backgroundImage = `url('media/${imgName}')`;
         viewer.style.backgroundPosition = state.artGender === 0 ? '0% 0%' : '100% 0%';
+    }
+
+    function nextArt() {
+        if (state.artGender === 0) {
+            state.artGender = 1;
+        } else {
+            state.artGender = 0;
+            state.artIndex++;
+            if (state.artIndex > 15) state.artIndex = 1;
+        }
+        updateSprite();
+    }
+
+    function prevArt() {
+        if (state.artGender === 1) {
+            state.artGender = 0;
+        } else {
+            state.artGender = 1;
+            state.artIndex--;
+            if (state.artIndex < 1) state.artIndex = 15;
+        }
+        updateSprite();
     }
 
     function renderClassViewer() {
@@ -560,7 +574,7 @@
             nome: document.getElementById('char-name').value,
             titulo: document.getElementById('char-title').value,
             arte: {
-                roupa: String(state.artOutfit).padStart(3, '0') + '.jpg',
+                roupa: String(state.artIndex).padStart(3, '0') + '.jpg',
                 genero: state.artGender === 0 ? '0% 0%' : '100% 0%'
             },
             lore: {
@@ -600,7 +614,7 @@
         .header { text-align: center; border-bottom: 2px solid #8b5a2b; padding-bottom: 15px; margin-bottom: 20px; }
         .header h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; }
         .header h3 { margin: 5px 0 0 0; color: #795548; font-style: italic; font-weight: normal; }
-        .art-placeholder { width: 150px; height: 150px; border: 2px solid #8b5a2b; margin: 15px auto; border-radius: 50%; background-image: url('../media/${fichaData.arte.roupa}'); background-size: 200% auto; background-position: ${fichaData.arte.genero}; background-repeat: no-repeat; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .art-placeholder { width: 150px; height: 150px; border: 2px solid #8b5a2b; margin: 15px auto; border-radius: 50%; background-image: url('media/${fichaData.arte.roupa}'); background-size: 200% auto; background-position: ${fichaData.arte.genero}; background-repeat: no-repeat; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
         .grid-layout { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .grid-layout { grid-template-columns: 1fr 1fr 1fr; } }
         .box { border: 2px solid #d7ccc8; padding: 15px; border-radius: 8px; background: #fff; }
