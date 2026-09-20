@@ -1,9 +1,8 @@
-<!-- ARQUIVO: gerador.html (Salve dentro da pasta RPG/system/) -->
 <style>
     .gerador-container { display: flex; flex-direction: column; height: 100%; width: 100%; font-size: 14px; }
     
     .sticky-tabs { flex: 0 0 auto; display: flex; background-color: var(--bg-parchment); border-bottom: 2px solid var(--border-wood); box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 100; }
-    .tab-btn { flex: 1; padding: 10px 0; text-align: center; background: transparent; color: var(--text-muted); border: none; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
+    .tab-btn { flex: 1; padding: 12px 0; text-align: center; background: transparent; color: var(--text-muted); border: none; font-weight: bold; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
     .tab-btn.active { color: var(--text-dark); border-bottom: 3px solid var(--border-wood); background: rgba(139, 90, 43, 0.1); }
 
     .content-wrapper { flex: 1 1 auto; overflow-y: auto; padding: 10px; position: relative; }
@@ -16,14 +15,14 @@
     .input-subtitle { width: 100%; background: transparent; border: none; border-bottom: 1px dashed var(--text-muted); color: var(--text-muted); font-size: 0.9rem; outline: none; text-transform: uppercase; text-align: center; font-family: 'Georgia', serif; margin-bottom: 15px; }
     .input-title::placeholder, .input-subtitle::placeholder { color: #bcaaa4; }
 
-    .art-frame { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-paper); border: 2px solid var(--border-wood); border-radius: 8px; margin-bottom: 10px; overflow: hidden; position: relative; min-height: 300px; }
-    .sprite-viewer { width: 100%; height: 100%; background-size: 200% 100%; background-position: 0% 0%; background-repeat: no-repeat; transition: background-position 0.3s ease, background-image 0.3s ease; }
-    .art-controls { display: flex; justify-content: space-between; width: 100%; padding: 10px; background: var(--bg-parchment); border-top: 1px solid var(--border-light); flex: 0 0 auto; }
-    .btn-art { flex: 1; background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px 15px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; margin: 0 5px; transition: transform 0.1s; }
+    .art-frame { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-paper); border: 2px solid var(--border-wood); border-radius: 8px; margin: 0 auto 10px auto; overflow: hidden; position: relative; width: 160px; height: 220px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+    .sprite-viewer { width: 100%; height: 100%; background-size: 450% auto; background-position: 12% 25%; background-repeat: no-repeat; transition: background-position 0.3s ease, background-image 0.3s ease; }
+    .art-controls { display: flex; justify-content: center; width: 100%; padding: 10px 0; flex: 0 0 auto; gap: 10px; }
+    .btn-art { background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 10px 20px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; transition: transform 0.1s; }
 
     .form-group { margin-bottom: 10px; flex: 0 0 auto; }
     .form-group label { display: block; font-size: 0.8rem; color: var(--border-wood); font-weight: bold; margin-bottom: 4px; text-transform: uppercase; }
-    .form-control { width: 100%; background: #fff; border: 1px solid var(--border-light); color: var(--text-dark); padding: 8px; border-radius: 4px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    .form-control { width: 100%; background: #fff; border: 1px solid var(--border-light); color: var(--text-dark); padding: 10px; border-radius: 4px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
     .form-control:focus { border-color: var(--border-wood); }
     textarea.form-control { resize: none; height: 60px; }
 
@@ -46,15 +45,15 @@
     .skill-card.active .btn-remove-skill { display: block; }
 
     .class-footer { flex: 0 0 auto; display: flex; justify-content: space-between; padding: 8px; background: var(--bg-parchment); border-top: 2px solid var(--border-wood); }
-    .btn-nav-class { flex: 1; background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; cursor: pointer; transition: transform 0.1s; margin: 0 4px; text-transform: uppercase; }
+    .btn-nav-class { flex: 1; background: #fff; border: 2px solid var(--border-wood); color: var(--text-dark); padding: 10px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: transform 0.1s; margin: 0 4px; text-transform: uppercase; }
 
     .profile-grid { flex: 0 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-    .btn-profile { background: var(--bg-paper); border: 2px solid var(--border-wood); color: var(--text-dark); padding: 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; cursor: pointer; transition: transform 0.1s; }
+    .btn-profile { background: var(--bg-paper); border: 2px solid var(--border-wood); color: var(--text-dark); padding: 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; cursor: pointer; transition: transform 0.1s; }
     .btn-profile.active { background: var(--border-wood); color: #fff; }
     .btn-profile.ghost { opacity: var(--ghost-opacity); }
     
     .auto-assign-grid { flex: 0 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-    .btn-auto { background: #fff; border: 2px solid var(--accent-blue); color: var(--text-dark); padding: 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; cursor: pointer; transition: transform 0.1s; }
+    .btn-auto { background: #fff; border: 2px solid var(--accent-blue); color: var(--text-dark); padding: 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; cursor: pointer; transition: transform 0.1s; }
     .btn-auto.active { background: var(--accent-blue); color: #fff; }
     .btn-auto.ghost { opacity: var(--ghost-opacity); }
     
@@ -70,17 +69,17 @@
     .status-item { text-align: center; }
     .status-item span { display: block; color: var(--bg-paper); font-size: 1.1rem; margin-top: 2px; }
 
-    .bottom-bar { flex: 0 0 auto; background: var(--bg-parchment); border-top: 2px solid var(--border-wood); display: flex; padding: 8px; gap: 8px; z-index: 1000; box-shadow: 0 -2px 8px rgba(0,0,0,0.1); }
-    .btn-bottom { flex: 1; padding: 10px 0; font-weight: bold; font-size: 0.8rem; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; transition: transform 0.1s; }
-    .btn-close { flex: 0 0 40px; background: var(--danger); color: #fff; font-size: 1.1rem; border: 2px solid #b71c1c; }
+    .bottom-bar { flex: 0 0 auto; background: var(--bg-parchment); border-top: 2px solid var(--border-wood); display: flex; padding: 10px; gap: 10px; z-index: 1000; box-shadow: 0 -2px 8px rgba(0,0,0,0.1); }
+    .btn-bottom { flex: 1; padding: 12px 0; font-weight: bold; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; transition: transform 0.1s; }
+    .btn-close { flex: 0 0 45px; background: var(--danger); color: #fff; font-size: 1.2rem; border: 2px solid #b71c1c; }
     .btn-rng { background: var(--bg-paper); color: var(--text-dark); border: 2px solid var(--border-wood); }
     .btn-generate { background: var(--border-wood); color: #fff; border: 2px solid #5d4037; }
 
     @media (min-width: 768px) {
         .sticky-tabs { display: none; }
-        .content-wrapper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 100%; height: calc(100vh - 110px); overflow: hidden; padding: 15px; padding-bottom: 90px; }
+        .content-wrapper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 100%; height: 100%; overflow: hidden; padding: 15px; padding-bottom: 90px; }
         .tab-content { display: flex !important; flex-direction: column; height: 100%; overflow-y: auto; padding-right: 5px; }
-        .bottom-bar { position: fixed; bottom: 0; left: 0; width: 100%; padding: 10px 20px; justify-content: center; }
+        .bottom-bar { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px 20px; justify-content: center; }
         .btn-bottom { max-width: 200px; }
     }
 </style>
@@ -104,8 +103,8 @@
                 <div id="sprite-view" class="sprite-viewer" style="background-image: url('media/001.jpg');"></div>
             </div>
             <div class="art-controls">
-                <button class="btn-art btn-tactile" onclick="acaoBotao(() => prevArt())">❮ Anterior</button>
-                <button class="btn-art btn-tactile" onclick="acaoBotao(() => nextArt())">Próxima ❯</button>
+                <button class="btn-art btn-tactile" onclick="acaoBotao(() => navArt(-1))">❮ Anterior</button>
+                <button class="btn-art btn-tactile" onclick="acaoBotao(() => navArt(1))">Próxima ❯</button>
             </div>
         </div>
 
@@ -200,8 +199,17 @@
 </div>
 
 <script>
+    const BIBLIOTECA_RNG = {
+        nomes: ["Kael", "Lyra", "Gideon", "Elara", "Thorne", "Sylas", "Nova", "Bram", "Vesper", "Caelum", "Seraphina", "Darius", "Aria", "Fenrir", "Luna", "Orion", "Sol", "Zephyr", "Kira", "Roxas"],
+        titulos: ["O Exilado", "Lâmina Fantasma", "Coração de Fogo", "O Sábio", "Andarilho das Sombras", "Mão de Ferro", "Voz do Vento", "Quebra-Escudos", "O Último Guardião", "Arauto da Alvorada"],
+        generos: ["Masculino", "Feminino", "Não-Binário", "Fluido", "Desconhecido"],
+        identidades: ["Mercenário Arrependido", "Nobre Caído", "Estudioso Curioso", "Guarda-Costas Juramentado", "Caçador de Relíquias", "Mago Errante", "Pirata dos Céus", "Cavaleiro Sem Senhor"],
+        origens: ["Capital Imperial de Vector", "Vila das Cinzas", "Deserto de Vidro", "Floresta Flutuante de Zephyr", "Ruínas Antigas de Ouro", "Ilhas Flutuantes", "Cidade Subterrânea dos Anões"],
+        treinamentos: ["Fui treinado por um mestre recluso nas montanhas, que me ensinou a disciplina do aço e do espírito.", "Aprendi a lutar nas ruas sujas da capital para sobreviver a mais um dia entre gangues e ladrões.", "Fui soldado de elite do exército imperial antes de desertar ao descobrir a terrível verdade sobre a guerra.", "Descobri grimórios antigos na biblioteca empoeirada da minha família e aprendi magia em segredo.", "Sobrevivi sozinho na selva e aprendi a lutar observando e imitando os movimentos das feras selvagens."],
+        chamados: ["Minha vila foi atacada por forças sombrias e jurei vingança contra o líder deles, custe o que custar.", "Encontrei um artefato antigo que sussurrou meu nome e me mostrou uma visão do fim do mundo.", "Uma dívida de sangue antiga da minha família me forçou a deixar minha casa e viajar para pagá-la.", "Tive uma visão de uma deusa esquecida e agora preciso reunir os fragmentos do seu poder para impedir o caos.", "Fui banido injustamente do meu reino por um crime que não cometi e busco limpar meu nome e recuperar minha honra."]
+    };
+
     let compendio = { classes: [] };
-    let bibliotecaRNG = {};
     
     let state = {
         pointsLeft: 5,
@@ -217,18 +225,21 @@
         try {
             const resComp = await fetch('data/compendio_fabula.json');
             if (!resComp.ok) throw new Error('compendio_fabula.json não encontrado');
-            const dataComp = await resComp.json();
-            compendio = dataComp;
+            compendio = await resComp.json();
             
-            const resRNG = await fetch('data/rng_gerador_jogador.json');
-            if (!resRNG.ok) throw new Error('rng_gerador_jogador.json não encontrado');
-            bibliotecaRNG = await resRNG.json();
+            try {
+                const resRNG = await fetch('data/rng_gerador_jogador.json');
+                if (resRNG.ok) {
+                    const extRNG = await resRNG.json();
+                    Object.assign(BIBLIOTECA_RNG, extRNG);
+                }
+            } catch(e) { console.log("Usando RNG interno."); }
             
             renderClassViewer();
         } catch (e) {
             console.error("Erro ao carregar JSON.", e);
             document.getElementById('cv-name').innerText = "ERRO DE CONEXÃO";
-            document.getElementById('cv-desc').innerText = "Não foi possível carregar os dados. Verifique os caminhos data/compendio_fabula.json e data/rng_gerador_jogador.json.";
+            document.getElementById('cv-desc').innerText = "Não foi possível carregar os dados. Verifique os caminhos data/compendio_fabula.json.";
         }
     }
 
@@ -244,27 +255,26 @@
         const viewer = document.getElementById('sprite-view');
         const imgName = String(state.artIndex).padStart(3, '0') + '.jpg';
         viewer.style.backgroundImage = `url('media/${imgName}')`;
-        viewer.style.backgroundPosition = state.artGender === 0 ? '0% 0%' : '100% 0%';
+        viewer.style.backgroundPosition = state.artGender === 0 ? '12% 25%' : '88% 25%';
     }
 
-    function nextArt() {
-        if (state.artGender === 0) {
-            state.artGender = 1;
+    function navArt(direction) {
+        if (direction === 1) {
+            if (state.artGender === 0) {
+                state.artGender = 1;
+            } else {
+                state.artGender = 0;
+                state.artIndex++;
+                if (state.artIndex > 15) state.artIndex = 1;
+            }
         } else {
-            state.artGender = 0;
-            state.artIndex++;
-            if (state.artIndex > 15) state.artIndex = 1;
-        }
-        updateSprite();
-    }
-
-    function prevArt() {
-        if (state.artGender === 1) {
-            state.artGender = 0;
-        } else {
-            state.artGender = 1;
-            state.artIndex--;
-            if (state.artIndex < 1) state.artIndex = 15;
+            if (state.artGender === 1) {
+                state.artGender = 0;
+            } else {
+                state.artGender = 1;
+                state.artIndex--;
+                if (state.artIndex < 1) state.artIndex = 15;
+            }
         }
         updateSprite();
     }
@@ -450,10 +460,10 @@
 
         for (let classId in state.classInvestments) {
             let cls = compendio.classes.find(c => c.id === classId);
-            if (cls) {
-                hp += cls.beneficios_gratuitos.bonus_hp;
-                mp += cls.beneficios_gratuitos.bonus_mp;
-                ip += cls.beneficios_gratuitos.bonus_ip;
+            if (cls && cls.beneficios_gratuitos) {
+                hp += cls.beneficios_gratuitos.bonus_hp || 0;
+                mp += cls.beneficios_gratuitos.bonus_mp || 0;
+                ip += cls.beneficios_gratuitos.bonus_ip || 0;
                 if (state.classInvestments[classId]['fortaleza']) {
                     hp += (state.classInvestments[classId]['fortaleza'] * 3);
                 }
@@ -478,21 +488,20 @@
     }
 
     function gerarRNG() {
-        if (!bibliotecaRNG.nomes) {
-            alert("Biblioteca RNG não carregada.");
-            return;
-        }
-
-        if(!document.getElementById('char-name').value) document.getElementById('char-name').value = bibliotecaRNG.nomes[Math.floor(Math.random() * bibliotecaRNG.nomes.length)];
-        if(!document.getElementById('char-title').value) document.getElementById('char-title').value = bibliotecaRNG.titulos[Math.floor(Math.random() * bibliotecaRNG.titulos.length)];
-        if(!document.getElementById('lore-gender').value) document.getElementById('lore-gender').value = bibliotecaRNG.generos[Math.floor(Math.random() * bibliotecaRNG.generos.length)];
-        if(!document.getElementById('lore-identity').value) document.getElementById('lore-identity').value = bibliotecaRNG.identidades[Math.floor(Math.random() * bibliotecaRNG.identidades.length)];
-        if(!document.getElementById('lore-origin').value) document.getElementById('lore-origin').value = bibliotecaRNG.origens[Math.floor(Math.random() * bibliotecaRNG.origens.length)];
-        if(!document.getElementById('lore-training').value) document.getElementById('lore-training').value = bibliotecaRNG.treinamentos[Math.floor(Math.random() * bibliotecaRNG.treinamentos.length)];
-        if(!document.getElementById('lore-calling').value) document.getElementById('lore-calling').value = bibliotecaRNG.chamados[Math.floor(Math.random() * bibliotecaRNG.chamados.length)];
+        if(!document.getElementById('char-name').value) document.getElementById('char-name').value = BIBLIOTECA_RNG.nomes[Math.floor(Math.random() * BIBLIOTECA_RNG.nomes.length)];
+        if(!document.getElementById('char-title').value) document.getElementById('char-title').value = BIBLIOTECA_RNG.titulos[Math.floor(Math.random() * BIBLIOTECA_RNG.titulos.length)];
+        if(!document.getElementById('lore-gender').value) document.getElementById('lore-gender').value = BIBLIOTECA_RNG.generos[Math.floor(Math.random() * BIBLIOTECA_RNG.generos.length)];
+        if(!document.getElementById('lore-identity').value) document.getElementById('lore-identity').value = BIBLIOTECA_RNG.identidades[Math.floor(Math.random() * BIBLIOTECA_RNG.identidades.length)];
+        if(!document.getElementById('lore-origin').value) document.getElementById('lore-origin').value = BIBLIOTECA_RNG.origens[Math.floor(Math.random() * BIBLIOTECA_RNG.origens.length)];
+        if(!document.getElementById('lore-training').value) document.getElementById('lore-training').value = BIBLIOTECA_RNG.treinamentos[Math.floor(Math.random() * BIBLIOTECA_RNG.treinamentos.length)];
+        if(!document.getElementById('lore-calling').value) document.getElementById('lore-calling').value = BIBLIOTECA_RNG.chamados[Math.floor(Math.random() * BIBLIOTECA_RNG.chamados.length)];
         
         const temas = document.getElementById('lore-theme');
         if(temas.value === "") temas.selectedIndex = Math.floor(Math.random() * (temas.options.length - 1)) + 1;
+
+        state.artIndex = Math.floor(Math.random() * 15) + 1;
+        state.artGender = Math.random() > 0.5 ? 1 : 0;
+        updateSprite();
 
         if (state.profileDice.length === 0) {
             const profiles = [[8,8,8,8], [10,8,8,6], [10,10,6,6], [12,8,6,6]];
@@ -507,6 +516,8 @@
             const focuses = ['hp', 'mp', 'combat', 'support'];
             autoAssign(focuses[Math.floor(Math.random() * focuses.length)]);
         }
+
+        if (!compendio.classes || compendio.classes.length === 0) return;
 
         state.classInvestments = {};
         state.pointsLeft = 5;
@@ -575,7 +586,7 @@
             titulo: document.getElementById('char-title').value,
             arte: {
                 roupa: String(state.artIndex).padStart(3, '0') + '.jpg',
-                genero: state.artGender === 0 ? '0% 0%' : '100% 0%'
+                genero: state.artGender === 0 ? '12% 25%' : '88% 25%'
             },
             lore: {
                 genero: document.getElementById('lore-gender').value,
@@ -614,7 +625,7 @@
         .header { text-align: center; border-bottom: 2px solid #8b5a2b; padding-bottom: 15px; margin-bottom: 20px; }
         .header h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; }
         .header h3 { margin: 5px 0 0 0; color: #795548; font-style: italic; font-weight: normal; }
-        .art-placeholder { width: 150px; height: 150px; border: 2px solid #8b5a2b; margin: 15px auto; border-radius: 50%; background-image: url('media/${fichaData.arte.roupa}'); background-size: 200% auto; background-position: ${fichaData.arte.genero}; background-repeat: no-repeat; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .art-placeholder { width: 160px; height: 160px; border: 3px solid #8b5a2b; margin: 15px auto; border-radius: 50%; background-image: url('media/${fichaData.arte.roupa}'); background-size: 450% auto; background-position: ${fichaData.arte.genero}; background-repeat: no-repeat; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
         .grid-layout { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .grid-layout { grid-template-columns: 1fr 1fr 1fr; } }
         .box { border: 2px solid #d7ccc8; padding: 15px; border-radius: 8px; background: #fff; }
@@ -683,5 +694,6 @@
         URL.revokeObjectURL(url);
     }
 
+    updateSprite();
     initGerador();
 </script>

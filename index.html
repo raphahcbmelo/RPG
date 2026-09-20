@@ -1,10 +1,13 @@
-<!-- ARQUIVO: index.html (Salve na raiz da pasta RPG/) -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Fabula Ultima - Sistema</title>
+    <title>Fabula Ultima VTT</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b5a2b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         :root {
             --bg-parchment: #f4ecd8;
@@ -33,6 +36,9 @@
         .btn-menu { width: 100%; max-width: 300px; background: var(--bg-paper); border: 3px solid var(--border-wood); color: var(--text-dark); padding: 20px; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: transform 0.1s, box-shadow 0.1s; box-shadow: 4px 4px 0 var(--border-wood); }
         .btn-menu:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border-wood); }
         
+        .btn-update { background: var(--accent-blue); color: #fff; border-color: #0d47a1; box-shadow: 4px 4px 0 #0d47a1; margin-top: 30px; font-size: 1rem; }
+        .btn-update:active { box-shadow: 2px 2px 0 #0d47a1; }
+
         .btn-tactile { transition: transform 0.1s; }
         .btn-tactile:active { transform: scale(0.95); }
 
@@ -48,6 +54,7 @@
             <div class="menu-title">PAINEL DO JOGADOR</div>
             <button class="btn-menu" onclick="acaoBotao(() => loadModule('system/gerador.html'))">⚔️ Gerador de Ficha</button>
             <button class="btn-menu" onclick="acaoBotao(() => alert('Módulo Minhas Fichas em desenvolvimento.'))">📜 Minhas Fichas</button>
+            <button class="btn-menu btn-update" onclick="acaoBotao(forcarAtualizacao)">🔄 Atualizar Sistema</button>
         </div>
     </div>
 
@@ -57,6 +64,21 @@
     </div>
 
     <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js');
+            });
+        }
+
+        function forcarAtualizacao() {
+            if(confirm("Verificar atualizações no servidor?")) {
+                if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                    navigator.serviceWorker.controller.postMessage({type: 'CLEAR_CACHES'});
+                }
+                setTimeout(() => { window.location.reload(true); }, 500);
+            }
+        }
+
         function acaoBotao(callback) {
             setTimeout(callback, 250);
         }
@@ -69,7 +91,7 @@
             
             try {
                 const response = await fetch(url);
-                if (!response.ok) throw new Error('Falha ao carregar o módulo. Verifique se está rodando em um servidor (Live Server ou GitHub Pages).');
+                if (!response.ok) throw new Error('Falha ao carregar o módulo.');
                 const html = await response.text();
                 
                 root.innerHTML = html;
@@ -95,6 +117,7 @@
                     <div class="menu-title">PAINEL DO JOGADOR</div>
                     <button class="btn-menu" onclick="acaoBotao(() => loadModule('system/gerador.html'))">⚔️ Gerador de Ficha</button>
                     <button class="btn-menu" onclick="acaoBotao(() => alert('Módulo Minhas Fichas em desenvolvimento.'))">📜 Minhas Fichas</button>
+                    <button class="btn-menu btn-update" onclick="acaoBotao(forcarAtualizacao)">🔄 Atualizar Sistema</button>
                 </div>
             `;
         }
