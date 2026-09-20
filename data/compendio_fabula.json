@@ -1,0 +1,1604 @@
+{
+  "classes": [
+    {
+      "id": "arcanista",
+      "nome": "Arcanista",
+      "descricao": "Convoque avatares mágicos de entidades antigas e divinas.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 5,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "circulo_arcano",
+          "nome": "Círculo Arcano",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Depois de você descartar voluntariamente um Arcano em seu turno durante um conflito, se esse Arcano não tiver sido invocado durante este mesmo turno e você tiver uma arma arcana equipada, você pode realizar imediatamente a ação de Feitiço de graça. O feitiço que você lança desta forma deve ter um custo total de Pontos Mentais de 【SL × 5】 ou inferior.",
+          "descricao_novato": "Quando você mandar um Arcano embora no seu turno, você pode lançar um feitiço de graça logo em seguida, desde que o custo de MP do feitiço seja baixo."
+        },
+        {
+          "id": "regeneracao_arcana",
+          "nome": "Regeneração Arcana",
+          "nivel_maximo": 2,
+          "descricao_oficial": "Ao invocar um Arcano, você recupera imediatamente 【SL × 5】 Pontos de Vida.",
+          "descricao_novato": "Sempre que você chamar um Arcano para a batalha, você cura um pouco da sua própria Vida."
+        },
+        {
+          "id": "ligar_e_convocar",
+          "nome": "Ligar e Convocar",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode vincular Arcanos à sua alma e invocá-los mais tarde. Você pode usar uma ação e gastar 40 Pontos Mentais para invocar um Arcano que você vinculou.",
+          "descricao_novato": "Você pode fazer amizade com Arcanos poderosos pelo mundo. Durante a luta, você gasta 40 MP para chamá-los para te ajudar."
+        },
+        {
+          "id": "arcano_de_emergencia",
+          "nome": "Arcano de Emergência",
+          "nivel_maximo": 6,
+          "descricao_oficial": "Enquanto você estiver em Crise, o custo para invocar seus Arcanos será reduzido em 【SL × 5】 Pontos Mentais.",
+          "descricao_novato": "Se você estiver com pouca Vida (em Crise), chamar um Arcano custa menos MP."
+        },
+        {
+          "id": "arcanismo_ritual",
+          "nome": "Arcanismo Ritual",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode realizar Rituais da disciplina Arcanismo, desde que seus efeitos estejam dentro dos domínios de um ou mais Arcanos que você vinculou. Usa 【WLP + WLP】.",
+          "descricao_novato": "Você pode fazer rituais mágicos fora de combate usando os poderes dos Arcanos que você já conhece."
+        }
+      ]
+    },
+    {
+      "id": "quimerista",
+      "nome": "Quimerista",
+      "descricao": "Aprenda feitiços com criaturas e fale com feras.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 5,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "consumir",
+          "nome": "Consumir",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Depois de causar dano a uma ou mais criaturas com um feitiço, se você tiver uma arma arcana, adaga ou mangual equipada, você recupera 【SL × 2】 Pontos Mentais.",
+          "descricao_novato": "Quando você machuca um monstro com magia usando certas armas, você suga a energia dele e recupera seu próprio MP."
+        },
+        {
+          "id": "discurso_feral",
+          "nome": "Discurso Feral",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode se comunicar com criaturas das espécies besta, monstro e planta.",
+          "descricao_novato": "Você consegue conversar com animais, monstros e plantas mágicas como se fossem pessoas."
+        },
+        {
+          "id": "patogenese",
+          "nome": "Patogênese",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Quando você causa dano a uma ou mais criaturas com uma de suas magias de Quimerista, cada uma daquelas criaturas que compartilham suas Espécies com a criatura com a qual você originalmente aprendeu aquela magia sofre envenenamento.",
+          "descricao_novato": "Suas magias de monstro envenenam inimigos que sejam da mesma espécie do monstro que te ensinou a magia."
+        },
+        {
+          "id": "quimerismo_ritual",
+          "nome": "Quimerismo Ritual",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode realizar Rituais cujos efeitos se enquadrem na disciplina Quimerismo. Usa 【INS + WLP】 ou 【MIG + WLP】.",
+          "descricao_novato": "Você pode fazer rituais mágicos ligados à natureza, aos sentidos e aos monstros."
+        },
+        {
+          "id": "mimico_de_feitico",
+          "nome": "Mímico de Feitiço",
+          "nivel_maximo": 10,
+          "descricao_oficial": "Quando você vir uma criatura (Besta, Monstro ou Planta) lançar uma magia, você pode aprender aquela magia. Você pode ter até 【SL + 2】 feitiços Quimeristas memorizados.",
+          "descricao_novato": "Quando você vê um monstro usar uma magia, você pode aprender ela na hora e usar contra eles depois!"
+        }
+      ]
+    },
+    {
+      "id": "lamina_negra",
+      "nome": "Lâmina Negra",
+      "descricao": "Libere ataques sombrios e obtenha poder de Vínculos.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 5,
+        "bonus_mp": 0,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": true,
+        "marcial_distancia": false,
+        "marcial_armadura": true,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "agonia",
+          "nome": "Agonia",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Depois de causar dano a uma ou mais criaturas, se você tiver um vínculo com pelo menos uma dessas criaturas, você poderá recuperar 【SL × 2】 Pontos de Vida e 【SL × 2】 Pontos Mentais.",
+          "descricao_novato": "Quando você machuca alguém com quem você tem um Vínculo (mesmo que seja de ódio), você recupera Vida e MP."
+        },
+        {
+          "id": "sangue_escuro",
+          "nome": "Sangue Escuro",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Enquanto estiver em Crise, você terá resistência a danos sombrios e venenosos.",
+          "descricao_novato": "Quando você está com pouca Vida (em Crise), você toma menos dano de escuridão e de veneno."
+        },
+        {
+          "id": "coracao_de_escuridao",
+          "nome": "Coração de Escuridão",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Uma vez por cena, ao entrar na Crise, você pode escolher uma criatura específica com a qual você pode ver e que não tem um vínculo. Crie um Laço de ódio contra aquela criatura.",
+          "descricao_novato": "Quando você fica com pouca Vida, pode escolher um inimigo e criar um Vínculo de Ódio com ele na hora."
+        },
+        {
+          "id": "licao_dolorosa",
+          "nome": "Lição Dolorosa",
+          "nivel_maximo": 3,
+          "descricao_oficial": "Depois que outra criatura fizer com que você perca Pontos de Vida, você poderá realizar imediatamente a ação Estudar naquela criatura de graça. Ganhe um bônus igual a 【SL】 em seu Cheque.",
+          "descricao_novato": "Quando alguém te machuca, você pode estudar essa pessoa de graça para descobrir seus pontos fracos."
+        },
+        {
+          "id": "ataque_sombra",
+          "nome": "Ataque Sombra",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Use uma ação para rolar seu dado de Potência atual e perder HP igual ao resultado. Faça um ataque livre: se atingir, causa dano extra igual a 【SL + o número obtido no dado】. Todo o dano torna-se sombrio.",
+          "descricao_novato": "Você gasta sua própria Vida para dar um ataque extra muito forte, cheio de energia da escuridão."
+        }
+      ]
+    },
+    {
+      "id": "elementalista",
+      "nome": "Elementalista",
+      "descricao": "Exerça o poder destrutivo dos elementos.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 5,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "cataclismo",
+          "nome": "Cataclismo",
+          "nivel_maximo": 3,
+          "descricao_oficial": "Ao lançar um feitiço instantâneo com arma arcana equipada, você pode aumentar o custo de MP em até 【SL × 10】. O feitiço causará 5 de dano extra a cada criatura para cada 10 MP gastos a mais.",
+          "descricao_novato": "Você pode gastar mais MP de propósito para fazer suas magias de ataque causarem muito mais dano."
+        },
+        {
+          "id": "magia_elementar",
+          "nome": "Magia Elementar",
+          "nivel_maximo": 10,
+          "descricao_oficial": "Cada vez que adquirir esta Habilidade, aprenda um feitiço Elementalista. Feitiços ofensivos usam 【INS + WLP】.",
+          "descricao_novato": "Você aprende magias poderosas que controlam fogo, gelo, raio, ar e terra."
+        },
+        {
+          "id": "artilharia_magica",
+          "nome": "Artilharia Mágica",
+          "nivel_maximo": 3,
+          "descricao_oficial": "Quando você lança um feitiço ofensivo, se tiver uma arma arcana equipada, você ganha um bônus em seu Teste Mágico igual a 【SL × 2】.",
+          "descricao_novato": "Se estiver segurando uma arma mágica (como um cajado), é muito mais fácil acertar suas magias nos inimigos."
+        },
+        {
+          "id": "elementalismo_ritual",
+          "nome": "Elementalismo Ritual",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode realizar Rituais cujos efeitos se enquadrem na disciplina Elementalismo. Usa 【INS + WLP】.",
+          "descricao_novato": "Você pode fazer rituais mágicos fora de combate para controlar o clima, a água, a terra e o fogo."
+        },
+        {
+          "id": "lamina_magica",
+          "nome": "Lâmina Mágica",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Quando lança um feitiço ofensivo de alvo único (custo máx 【SL × 10】 MP) com arma equipada, você pode usar a fórmula de Precisão da arma em vez do Teste Mágico padrão.",
+          "descricao_novato": "Você pode usar sua espada ou arco para lançar magias, usando a sua mira normal em vez da sua mira mágica."
+        }
+      ]
+    },
+    {
+      "id": "entropista",
+      "nome": "Entropista",
+      "descricao": "Canalize a energia escura do Cosmos.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 5,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "absorver",
+          "nome": "Absorver",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Depois de sofrer dano, você pode recuperar imediatamente 【SL × 2】 Pontos Mentais.",
+          "descricao_novato": "Quando você toma dano dos inimigos, você suga a energia do golpe e recupera um pouco de MP."
+        },
+        {
+          "id": "magia_entropica",
+          "nome": "Magia Entrópica",
+          "nivel_maximo": 10,
+          "descricao_oficial": "Cada vez que adquirir esta Habilidade, aprenda um feitiço Entropista. Feitiços ofensivos usam 【INS + WLP】.",
+          "descricao_novato": "Você aprende magias caóticas e perigosas que mexem com o tempo, o espaço e a energia escura."
+        },
+        {
+          "id": "sete_da_sorte",
+          "nome": "Sete da Sorte",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você tem um número da sorte (começa em 7). Uma vez por cena, após rolar, você pode substituir um dado pelo seu número da sorte. O valor substituído vira seu novo número da sorte.",
+          "descricao_novato": "Você tem um número da sorte. Uma vez por cena, você pode trocar o resultado de um dado que você rolou pelo seu número da sorte!"
+        },
+        {
+          "id": "entropismo_ritual",
+          "nome": "Entropismo Ritual",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode realizar Rituais cujos efeitos se enquadrem na disciplina Entropismo. Usa 【INS + WLP】.",
+          "descricao_novato": "Você pode fazer rituais mágicos para alterar a realidade, o tempo e o espaço ao seu redor."
+        },
+        {
+          "id": "tempo_roubado",
+          "nome": "Tempo Roubado",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Gaste até 【SL × 5】 MP. Para cada 5 MP: inflija lentidão, cure lentidão, permita a um aliado usar Equipamento grátis, ou dê um turno imediato a um aliado que não agiu.",
+          "descricao_novato": "Você gasta MP para mexer no tempo: pode deixar inimigos lentos, curar a lentidão de amigos ou dar ações extras para eles agirem na hora."
+        }
+      ]
+    },
+{
+      "id": "furia",
+      "nome": "Fúria",
+      "descricao": "Provoque inimigos e bata com mais força quando sofrer dano.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 5,
+        "bonus_mp": 0,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": true,
+        "marcial_distancia": false,
+        "marcial_armadura": true,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "adrenalina",
+          "nome": "Adrenalina",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Enquanto estiver em Crise, você causa 【SL × 2】 dano extra (seja com ataques, feitiços, Arcanos, itens ou qualquer outro método).",
+          "descricao_novato": "Quando você está com pouca Vida (em Crise), o seu desespero te deixa mais forte e todos os seus ataques machucam muito mais!"
+        },
+        {
+          "id": "frenesi",
+          "nome": "Frenesi",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Seus Testes de Precisão com armas de briga, adaga, mangual e arremesso geram um sucesso crítico se ambos os dados mostrarem o mesmo número (e o Teste não for um desastre).",
+          "descricao_novato": "Você consegue dar ataques críticos muito mais fácil quando usa armas leves, como adagas ou os próprios punhos."
+        },
+        {
+          "id": "espirito_indomavel",
+          "nome": "Espírito Indomável",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Ao gastar um ou mais Pontos Fabula, você obtém um benefício adicional: você recupera 【SL × 5】 Pontos de Vida; ou recupera 【SL × 5】 Pontos Mentais; ou se recupera de um único efeito de status de sua escolha.",
+          "descricao_novato": "Sempre que você usar um Ponto Fabula para mudar a história ou rolar dados de novo, você também se cura, recupera MP ou tira um efeito ruim de você."
+        },
+        {
+          "id": "provocar",
+          "nome": "Provocar",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Você pode usar uma ação e gastar 5 MP para realizar um 【MIG + WLP】 Oposto. Se tiver sucesso, o alvo fica enfurecido e é compelido a focar sua atenção em você. Você ganha um bônus igual a 【SL】 em seus testes para esta habilidade.",
+          "descricao_novato": "Você xinga e irrita um monstro. Ele fica com tanta raiva que é obrigado a atacar só você, deixando seus amigos seguros."
+        },
+        {
+          "id": "suportar",
+          "nome": "Suportar",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Ao realizar a ação Guarda, se você optar por não fornecer cobertura, você recupera HP igual a 【SL × maior força de Vínculo】 e trata Força ou Força de Vontade como um tamanho de dado maior até o final do seu próximo turno.",
+          "descricao_novato": "Quando você usa seu turno apenas para se defender, você recupera Vida lembrando dos seus amigos e fica mais forte para o próximo turno."
+        }
+      ]
+    },
+    {
+      "id": "guardiao",
+      "nome": "Guardião",
+      "descricao": "Proteja seus aliados e lute com armaduras pesadas.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 5,
+        "bonus_mp": 0,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": true,
+        "marcial_escudo": true
+      },
+      "habilidades": [
+        {
+          "id": "escolta",
+          "nome": "Escolta",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Se você realizar a ação de Guarda e escolher fornecer cobertura para outra criatura, aquela criatura ganha Resistência a todos os tipos de dano até o início do seu próximo turno.",
+          "descricao_novato": "Quando você usa seu turno para proteger um amigo, ele toma metade do dano de qualquer ataque que acertar ele."
+        },
+        {
+          "id": "maestria_defensiva",
+          "nome": "Maestria Defensiva",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Contanto que você tenha um escudo ou armadura marcial equipado, todo dano sofrido será reduzido em 【SL】 (aplicado antes das afinidades de dano).",
+          "descricao_novato": "Se você estiver usando uma armadura pesada ou um escudo, os ataques dos vilões machucam menos! O tanto que diminui é igual ao nível desta habilidade."
+        },
+        {
+          "id": "portador_de_escudo_duplo",
+          "nome": "Portador de Escudo Duplo",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Agora você pode equipar um escudo no slot da mão principal. Contanto que você tenha dois escudos equipados, você ganha os benefícios de ambos e pode tratá-los como uma arma corpo a corpo de duas mãos (Escudos Gêmeos).",
+          "descricao_novato": "Você pode lutar segurando dois escudos ao mesmo tempo! Você ganha a defesa dos dois e pode bater nos inimigos com eles."
+        },
+        {
+          "id": "fortaleza",
+          "nome": "Fortaleza",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Aumente permanentemente seus pontos de vida máximos em 【SL × 3】.",
+          "descricao_novato": "Você treina seu corpo para aguentar mais pancada, ganhando mais Vida máxima para sempre."
+        },
+        {
+          "id": "proteger",
+          "nome": "Proteger",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Quando outra criatura é ameaçada por um ataque, feitiço ou outro perigo, você pode tomar o lugar dela (quaisquer Testes serão realizados contra você). Você não pode proteger múltiplas criaturas do mesmo perigo.",
+          "descricao_novato": "Você pode pular na frente de um amigo na hora que ele for atacado, tomando o golpe no lugar dele para salvá-lo."
+        }
+      ]
+    },
+    {
+      "id": "mestre_da_tradicao",
+      "nome": "Mestre da Tradição",
+      "descricao": "Seja um mestre do conhecimento e apoie seus aliados.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 5,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "flash_de_insight",
+          "nome": "Flash de Insight",
+          "nivel_maximo": 3,
+          "descricao_oficial": "Quando você obtiver 13 ou mais em um Teste para investigar uma criatura, item ou local, você pode fazer ao Mestre do Jogo até 【SL】 perguntas relacionadas ao assunto. O Mestre responderá com sinceridade.",
+          "descricao_novato": "Quando você investiga muito bem alguma coisa, você pode fazer perguntas secretas para o Mestre do jogo e ele é obrigado a te contar a verdade."
+        },
+        {
+          "id": "focado",
+          "nome": "Focado",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Aumente permanentemente seu máximo de Pontos Mentais em 【SL × 3】. Ao realizar um Open Check usando 【INS + INS】, você ganha um bônus igual a 【SL】.",
+          "descricao_novato": "Você ganha mais MP máximo e fica muito melhor em testes de inteligência, observação e memória."
+        },
+        {
+          "id": "conhecimento_e_poder",
+          "nome": "Conhecimento é Poder",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Ao realizar uma Verificação de Precisão, você pode substituir um dos dados de Atributo por Insight (como 【INS + INS】 para uma pistola ou 【INS + MIG】 para um machado de guerra).",
+          "descricao_novato": "Você usa sua inteligência para mirar melhor, trocando a força ou agilidade pela sua mente na hora de atacar os monstros."
+        },
+        {
+          "id": "avaliacao_rapida",
+          "nome": "Avaliação Rápida",
+          "nivel_maximo": 6,
+          "descricao_oficial": "No início de um conflito, você pode gastar até 【SL × 5】 MP. Para cada 5 MP, escolha uma criatura e o Mestre revelará uma de suas Características ou Afinidades de dano.",
+          "descricao_novato": "Logo no começo da luta, você gasta MP para analisar os monstros e descobrir os pontos fracos e segredos deles antes de atacar."
+        },
+        {
+          "id": "memoria_treinada",
+          "nome": "Memória Treinada",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode se lembrar perfeitamente dos detalhes de qualquer cena que visitou na semana passada. Você pode 'voltar no tempo' em sua mente para investigar tais cenas novamente.",
+          "descricao_novato": "Você tem uma memória fotográfica! Você lembra de tudo que viu recentemente com perfeição e pode procurar pistas nas suas lembranças."
+        }
+      ]
+    },
+    {
+      "id": "orador",
+      "nome": "Orador",
+      "descricao": "Use suas palavras para ganhar aliados e influenciar conflitos.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 5,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "condenar",
+          "nome": "Condenar",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Você pode usar uma ação e gastar 5 MP para realizar um Teste Oposto 【INS + WLP】. Se tiver sucesso, o alvo perde 【SL × 10】 Pontos Mentais e fica atordoado ou abalado. Você ganha um bônus de 【SL】 neste teste.",
+          "descricao_novato": "Você acusa o inimigo com palavras duras, fazendo ele perder MP e ficar assustado ou confuso na batalha."
+        },
+        {
+          "id": "incentivar",
+          "nome": "Incentivar",
+          "nivel_maximo": 6,
+          "descricao_oficial": "Durante um conflito, gaste 5 MP para escolher um aliado. Essa criatura recupera 【SL × 5】 Pontos de Vida e trata um Atributo escolhido como sendo um tamanho de dado maior até o início do seu próximo turno.",
+          "descricao_novato": "Você fala palavras de coragem para um amigo, curando a Vida dele e deixando ele mais forte para o próximo ataque."
+        },
+        {
+          "id": "minha_confianca_em_voce",
+          "nome": "Minha Confiança em Você",
+          "nivel_maximo": 2,
+          "descricao_oficial": "Depois que outro PJ realizar um Teste, gaste 1 Ponto Fabula para invocar um Vínculo/Característica para permitir que ele jogue novamente. Se você tiver um vínculo com ele, ele recupera 【SL × 10】 MP.",
+          "descricao_novato": "Você gasta um Ponto Fabula para dar uma segunda chance pro seu amigo rolar os dados, e ainda recupera o MP dele se vocês forem próximos."
+        },
+        {
+          "id": "persuasivo",
+          "nome": "Persuasivo",
+          "nivel_maximo": 2,
+          "descricao_oficial": "Quando realiza com sucesso um Teste para preencher/apagar um Relógio usando charme, diplomacia ou intimidação, você pode gastar até 【SL × 20】 MP para preencher/apagar uma seção adicional para cada 20 MP gastos.",
+          "descricao_novato": "Você é tão bom de lábia que consegue resolver problemas sociais e convencer as pessoas muito mais rápido que o normal."
+        },
+        {
+          "id": "aliado_inesperado",
+          "nome": "Aliado Inesperado",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode usar uma ação e gastar 1 Ponto Fabula para escolher uma criatura não hostil. Ela se tornará útil para você, desde que você seja gentil e seus pedidos sejam razoáveis.",
+          "descricao_novato": "Você gasta um Ponto Fabula para fazer amizade com alguém na cena, e essa pessoa vai te ajudar com o que você precisar."
+        }
+      ]
+    },
+    {
+      "id": "por_conta_propria",
+      "nome": "Por Conta Própria",
+      "descricao": "Aproveite as oportunidades e roube itens exclusivos dos inimigos.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 0,
+        "bonus_ip": 2,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "tiro_barato",
+          "nome": "Tiro Barato",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Quando você atinge uma criatura com um ataque, se o ataque tiver como alvo apenas aquela criatura e ela estiver sofrendo efeitos de status, você causa dano extra igual a 【SL + o número de efeitos de status na criatura】.",
+          "descricao_novato": "Você bate mais forte em inimigos que já estão sofrendo com veneno, lentidão ou outras coisas ruins."
+        },
+        {
+          "id": "desviar",
+          "nome": "Desviar",
+          "nivel_maximo": 3,
+          "descricao_oficial": "Contanto que você não tenha escudos e nenhuma armadura marcial equipada, sua pontuação de Defesa será aumentada em 【SL】.",
+          "descricao_novato": "Se você estiver usando roupas leves e sem escudo, você fica muito rápido e é mais difícil dos monstros te acertarem."
+        },
+        {
+          "id": "alta_velocidade",
+          "nome": "Alta Velocidade",
+          "nivel_maximo": 3,
+          "descricao_oficial": "No início de um conflito, gaste 10 MP para realizar um ataque livre ou uma ação de Impedimento/Objetiva antes do primeiro round. Você ganha um bônus igual a 【SL】 para os Testes desta ação.",
+          "descricao_novato": "Você é tão rápido que consegue atacar ou fazer uma ação antes mesmo da luta começar de verdade."
+        },
+        {
+          "id": "ate_mais",
+          "nome": "Até Mais",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode usar uma ação e gastar 1 Ponto Fabula para desaparecer da cena atual, reaparecendo sempre que quiser durante uma cena diferente na qual outro Personagem Jogador esteja presente.",
+          "descricao_novato": "Você usa uma bomba de fumaça ou truque para fugir da luta e aparecer em outro lugar seguro onde seus amigos estejam."
+        },
+        {
+          "id": "roubo_de_alma",
+          "nome": "Roubo de Alma",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Use uma ação para realizar um teste 【DEX + WLP】 contra a M.DEF do alvo. Se tiver sucesso, rouba 【SL】 IP (se soldado) ou um tesouro da alma (se elite/campeão). Você ganha um bônus de 【SL】 neste teste.",
+          "descricao_novato": "Você rouba itens valiosos e pontos de inventário direto dos bolsos dos monstros no meio da batalha!"
+        }
+      ]
+    },
+{
+      "id": "atirador_afiado",
+      "nome": "Atirador Afiado",
+      "descricao": "Excel em combate à distância e negue ataques à distância.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 5,
+        "bonus_mp": 0,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": true,
+        "marcial_armadura": false,
+        "marcial_escudo": true
+      },
+      "habilidades": [
+        {
+          "id": "barragem",
+          "nome": "Barragem",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Ao realizar um ataque à distância, você pode gastar 10 Pontos Mentais para que o ataque ganhe multi (2) ou para aumentar a propriedade múltipla do ataque em um (até multi 3).",
+          "descricao_novato": "Você gasta MP para atirar muito rápido, acertando vários inimigos de uma vez só com suas flechas ou balas!"
+        },
+        {
+          "id": "fogo_cruzado",
+          "nome": "Fogo Cruzado",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Depois que uma criatura realizar um ataque à distância, você pode gastar MP igual ao Resultado do Teste dela para que o ataque falhe automaticamente. Requer arma de longo alcance equipada.",
+          "descricao_novato": "Você atira na flecha ou bala do inimigo no ar, fazendo ele errar o ataque contra seus amigos."
+        },
+        {
+          "id": "hawkeye",
+          "nome": "Hawkeye",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Ao realizar a ação de Guarda (sem dar cobertura), escolha: seu próximo ataque à distância na cena causa 【SL × 2】 dano extra; ou realize um ataque livre à distância tratando o High Roll como 0.",
+          "descricao_novato": "Você foca sua mira. No próximo turno, seu tiro machuca muito mais, ou você dá um tiro rápido de graça na mesma hora."
+        },
+        {
+          "id": "dominio_armas_alcance",
+          "nome": "Domínio de Armas de Alcance",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Você ganha um bônus igual a 【SL】 em todas as verificações de precisão com armas de longo alcance.",
+          "descricao_novato": "Você treinou muito e agora é muito mais fácil acertar seus tiros nos monstros."
+        },
+        {
+          "id": "tiro_de_aviso",
+          "nome": "Tiro de Aviso",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Quando atinge com ataque à distância, pode escolher não causar dano para: infligir abalado; infligir lentidão; ou fazer o alvo perder 【SL × 10】 MP.",
+          "descricao_novato": "Você atira de raspão só para assustar, deixando o inimigo confuso, lento ou sem energia mágica."
+        }
+      ]
+    },
+    {
+      "id": "espirita",
+      "nome": "Espírita",
+      "descricao": "Apoie seus aliados com magia e lance feitiços de luz.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 5,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "poder_de_cura",
+          "nome": "Poder de Cura",
+          "nivel_maximo": 2,
+          "descricao_oficial": "Quando lança um feitiço em aliados com arma arcana equipada, cada aliado recupera HP igual a 【SL × número de Títulos que você possui】.",
+          "descricao_novato": "Quando você usa magia para ajudar um amigo, a sua arma mágica brilha e cura um pouco da Vida dele também."
+        },
+        {
+          "id": "espiritismo_ritual",
+          "nome": "Espiritismo Ritual",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você pode realizar Rituais cujos efeitos se enquadrem na disciplina Espiritismo. Usa 【INS + WLP】.",
+          "descricao_novato": "Você pode fazer rituais mágicos fora de combate para lidar com emoções, ler corações e acalmar espíritos."
+        },
+        {
+          "id": "magia_espiritual",
+          "nome": "Magia Espiritual",
+          "nivel_maximo": 10,
+          "descricao_oficial": "Cada vez que adquirir esta Habilidade, aprenda um feitiço Espírita. Feitiços ofensivos usam 【INS + WLP】.",
+          "descricao_novato": "Você aprende magias de luz sagrada que curam seus amigos ou punem os monstros."
+        },
+        {
+          "id": "magia_de_apoio",
+          "nome": "Magia de Apoio",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Quando lança um feitiço em aliados com arma arcana equipada, escolha um aliado com quem tem Vínculo. Ele ganha bônus no próximo Teste igual à força do Vínculo.",
+          "descricao_novato": "Quando você ajuda um amigo com magia, o poder da amizade de vocês dá um bônus para ele no próximo ataque."
+        },
+        {
+          "id": "vismago",
+          "nome": "Vismago",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Ao lançar um feitiço, se não tiver MP suficiente, pode gastar o dobro do custo em HP (desde que não chegue a 0). Se o feitiço curar HP, você não é curado.",
+          "descricao_novato": "Se acabar o seu MP, você pode gastar a sua própria Vida para continuar lançando magias e salvando o grupo."
+        }
+      ]
+    },
+    {
+      "id": "funileiro",
+      "nome": "Funileiro",
+      "descricao": "Crie invenções e use os Pontos de Inventário de novas maneiras.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 0,
+        "bonus_ip": 2,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "item_de_emergencia",
+          "nome": "Item de Emergência",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Uma vez por cena de conflito, se você estiver em Crise, poderá realizar uma ação adicional no seu turno. Esta ação deve ser a ação Inventário.",
+          "descricao_novato": "Quando você está com pouca Vida, você consegue puxar um item da mochila e usar bem rápido como uma ação extra."
+        },
+        {
+          "id": "gadgets",
+          "nome": "Gadgets",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Escolha um tipo de gadget (alquimia, infusões ou magitech) para ganhar benefícios básicos, avançados ou superiores.",
+          "descricao_novato": "Você cria invenções malucas, como bombas alquímicas, armas elementais ou máquinas mágicas."
+        },
+        {
+          "id": "pocao_chuva",
+          "nome": "Poção Chuva",
+          "nivel_maximo": 2,
+          "descricao_oficial": "Quando cria uma poção que restaura HP/MP de 1 criatura, pode afetar até 【SL】 criaturas adicionais. A poção restaura apenas metade da quantidade normal para cada um.",
+          "descricao_novato": "Quando você usa uma poção de cura, você joga ela pro alto e a fumaça cura vários amigos de uma vez só!"
+        },
+        {
+          "id": "formula_secreta",
+          "nome": "Fórmula Secreta",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Poções/magisferas que restauram HP/MP aumentam a cura em 【SL × 5】. Itens que causam dano causam 【SL】 dano extra.",
+          "descricao_novato": "Suas poções de cura curam muito mais, e suas bombas machucam muito mais os monstros."
+        },
+        {
+          "id": "visionario",
+          "nome": "Visionário",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Quando trabalha em um Projeto, são pagos automaticamente até 【SL × 100】 zenit de materiais; além disso, você gera 【SL】 progresso adicional por dia.",
+          "descricao_novato": "Você é um gênio inventor. Seus projetos e invenções ficam prontos mais rápido e custam menos dinheiro."
+        }
+      ]
+    },
+    {
+      "id": "viajante",
+      "nome": "Viajante",
+      "descricao": "Seja um mestre explorador e junte forças com um companheiro leal.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 0,
+        "bonus_mp": 0,
+        "bonus_ip": 2,
+        "marcial_corpo_a_corpo": false,
+        "marcial_distancia": false,
+        "marcial_armadura": false,
+        "marcial_escudo": false
+      },
+      "habilidades": [
+        {
+          "id": "companheiro_fiel",
+          "nome": "Companheiro Fiel",
+          "nivel_maximo": 5,
+          "descricao_oficial": "Projete uma besta, construto, elemental ou planta nível 5. Ganha bônus de 【SL】 em Precisão/Magia. HP Máx = 【SL × tamanho + metade do nível】. Usa 1 ação sua para agir.",
+          "descricao_novato": "Você tem um bichinho de estimação mágico (ou robô) que viaja e luta com você! Você gasta sua ação para mandar ele atacar."
+        },
+        {
+          "id": "recursos",
+          "nome": "Recursos",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Você recupera 【SL】 Pontos de Inventário após cada rolagem de viagem no mapa mundial.",
+          "descricao_novato": "Você é ótimo em explorar e sempre acha ervas e itens úteis enquanto viaja pelo mapa, enchendo sua mochila."
+        },
+        {
+          "id": "conversa_de_taverna",
+          "nome": "Conversa de Taverna",
+          "nivel_maximo": 3,
+          "descricao_oficial": "Quando descansa em pousada/taverna, pode fazer até 【SL】 perguntas ao Game Master sobre o entorno e as pessoas; o GM responderá com sinceridade.",
+          "descricao_novato": "Quando você descansa na cidade, você ouve fofocas e o Mestre do jogo é obrigado a te contar segredos do lugar."
+        },
+        {
+          "id": "cacador_de_tesouros",
+          "nome": "Caçador de Tesouros",
+          "nivel_maximo": 2,
+          "descricao_oficial": "Quando viajar no mapa mundial, fará uma descoberta com um resultado de 【SL + 1】 ou inferior no teste de viagem (em vez de apenas 1).",
+          "descricao_novato": "Você tem muita sorte e sempre encontra tesouros escondidos e lugares secretos enquanto viaja."
+        },
+        {
+          "id": "bem_viajado",
+          "nome": "Bem Viajado",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Você reduz o dado rolado para suas jogadas de viagem em um tamanho (até um mínimo de d6).",
+          "descricao_novato": "Você conhece os atalhos do mundo, fazendo as viagens serem mais seguras e com menos chances de encontrar monstros."
+        }
+      ]
+    },
+    {
+      "id": "mestre_das_armas",
+      "nome": "Mestre das Armas",
+      "descricao": "Excel em combate corpo a corpo e contra ataques corpo a corpo.",
+      "beneficios_gratuitos": {
+        "bonus_hp": 5,
+        "bonus_mp": 0,
+        "bonus_ip": 0,
+        "marcial_corpo_a_corpo": true,
+        "marcial_distancia": false,
+        "marcial_armadura": true,
+        "marcial_escudo": true
+      },
+      "habilidades": [
+        {
+          "id": "tempestade_de_espadas",
+          "nome": "Tempestade de Espadas",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Ao realizar um ataque corpo a corpo, você pode gastar 10 MP para que o ataque ganhe multi (2) ou aumente a propriedade múltipla em um (até multi 3).",
+          "descricao_novato": "Gaste MP para girar sua arma com muita força e bater em vários inimigos de uma vez só!"
+        },
+        {
+          "id": "triturador_de_osso",
+          "nome": "Triturador de Osso",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Quando atinge com ataque corpo a corpo, pode não causar dano para: infligir atordoamento; infligir fraqueza; ou fazer o alvo perder 【SL × 10】 MP.",
+          "descricao_novato": "Em vez de machucar, você bate com o cabo da arma para atordoar, enfraquecer ou tirar a energia mágica do monstro."
+        },
+        {
+          "id": "violacao",
+          "nome": "Violação",
+          "nivel_maximo": 3,
+          "descricao_oficial": "Gaste 5 MP e uma ação para ataque livre corpo a corpo. Se acertar, não causa dano e escolhe: destrói escudo do alvo; destrói armadura do alvo; ou próxima fonte de dano causa 【SL × 2】 dano extra a ele.",
+          "descricao_novato": "Você dá um golpe especial que quebra o escudo ou a armadura do inimigo, deixando ele totalmente desprotegido."
+        },
+        {
+          "id": "contra_ataque",
+          "nome": "Contra Ataque",
+          "nivel_maximo": 1,
+          "descricao_oficial": "Depois que um inimigo atacar você corpo a corpo (acertando ou errando), se o dado de precisão dele for par, você realiza um ataque livre corpo a corpo contra ele (tratando o High Roll como 0 para dano).",
+          "descricao_novato": "Se um monstro te atacar de perto, você dá um golpe rápido nele de volta, mesmo se ele errar o ataque em você!"
+        },
+        {
+          "id": "dominio_armas_corpo_a_corpo",
+          "nome": "Domínio de Armas Corpo a Corpo",
+          "nivel_maximo": 4,
+          "descricao_oficial": "Você ganha um bônus igual a 【SL】 em todos os testes de precisão com armas corpo a corpo.",
+          "descricao_novato": "Você treinou muito e agora é muito mais fácil acertar seus golpes com espadas, machados e lanças."
+        }
+      ]
+    }
+  ],
+"feiticos": [
+    {
+      "id": "mortalha_elemental",
+      "nome": "Mortalha Elemental",
+      "classe": "Elementalista",
+      "custo": "5 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Escolha ar, raio, terra, fogo ou gelo. Até que este feitiço termine, cada alvo ganha Resistência contra o tipo de dano escolhido.",
+      "descricao_novato": "Protege seus amigos dando um escudo mágico contra um elemento (como fogo ou gelo), fazendo eles tomarem só metade do dano."
+    },
+    {
+      "id": "arma_elemental",
+      "nome": "Arma Elemental",
+      "classe": "Elementalista",
+      "custo": "10",
+      "alvo": "Uma arma equipada",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Escolha ar, raio, terra, fogo ou gelo. O dano da arma passa a ser do tipo escolhido. Você pode realizar um ataque livre com ela como parte da mesma ação.",
+      "descricao_novato": "Sua arma ganha o poder de um elemento (como uma espada de fogo) e você pode dar um ataque de graça na mesma hora!"
+    },
+    {
+      "id": "sinalizador",
+      "nome": "Sinalizador",
+      "classe": "Elementalista",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo sofre 【HR + 25】 dano de fogo. O dano causado por este feitiço ignora as Resistências.",
+      "descricao_novato": "Um raio de fogo super quente que derrete a defesa do monstro, ignorando a resistência dele."
+    },
+    {
+      "id": "fulgur",
+      "nome": "Fulgur",
+      "classe": "Elementalista",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Cada alvo sofre 【HR + 15】 dano de raio. Oportunidade: Cada alvo atingido fica atordoado.",
+      "descricao_novato": "Solta raios em até 3 inimigos. Se você tirar um crítico nos dados, eles tomam um choque e ficam atordoados."
+    },
+    {
+      "id": "geleiras",
+      "nome": "Geleiras",
+      "classe": "Elementalista",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Cada alvo sofre 【HR + 15】 dano de gelo. Oportunidade: Cada alvo atingido sofre lentidão.",
+      "descricao_novato": "Congela até 3 inimigos. Se você tirar um crítico nos dados, eles ficam lentos de tanto frio."
+    },
+    {
+      "id": "iceberg",
+      "nome": "Iceberg",
+      "classe": "Elementalista",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo sofre 【HR + 25】 dano de gelo. O dano causado por este feitiço ignora as Resistências.",
+      "descricao_novato": "Um pilar de gelo gigante esmaga o monstro, ignorando a resistência dele."
+    },
+    {
+      "id": "ignis",
+      "nome": "Ignis",
+      "classe": "Elementalista",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Cada alvo sofre 【HR + 15】 dano de fogo. Oportunidade: Cada alvo atingido fica abalado.",
+      "descricao_novato": "Queima até 3 inimigos. Se você tirar um crítico nos dados, eles ficam assustados e abalados."
+    },
+    {
+      "id": "ataque_crescente",
+      "nome": "Ataque Crescente",
+      "classe": "Elementalista",
+      "custo": "10",
+      "alvo": "Auto",
+      "duracao": "Instantâneo",
+      "ofensivo": false,
+      "descricao_oficial": "Realize um ataque livre corpo a corpo. Pode ter como alvo criaturas voadoras. Se usar arma de briga ou lança, causa 5 de dano extra. Pode forçar alvo voador a pousar.",
+      "descricao_novato": "O vento te empurra pra cima! Você dá um ataque corpo a corpo que acerta até monstros voando e derruba eles no chão."
+    },
+    {
+      "id": "terra",
+      "nome": "Terra",
+      "classe": "Elementalista",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Cada alvo sofre 【HR + 15】 dano de terra. Não pode atingir alvos voadores. Oportunidade: Cada alvo realiza uma ação a menos no próximo turno.",
+      "descricao_novato": "Espinhos de pedra saem do chão. Não acerta quem voa, mas se der crítico, o monstro perde uma ação no próximo turno."
+    },
+    {
+      "id": "raio",
+      "nome": "Raio",
+      "classe": "Elementalista",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo sofre 【HR + 25】 dano de raio. O dano causado por este feitiço ignora as Resistências.",
+      "descricao_novato": "Um relâmpago muito forte cai do céu e frita o monstro, ignorando a resistência dele."
+    },
+    {
+      "id": "ventus",
+      "nome": "Ventus",
+      "classe": "Elementalista",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Cada alvo sofre 【HR + 15】 dano aéreo. Oportunidade: Cada alvo voador é forçado a pousar imediatamente.",
+      "descricao_novato": "Um vento forte que machuca os monstros. Se der crítico, derruba no chão quem estiver voando."
+    },
+    {
+      "id": "vortice",
+      "nome": "Vórtice",
+      "classe": "Elementalista",
+      "custo": "10",
+      "alvo": "Auto",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Um vendaval forte envolve você. Até que a magia termine, você ganha +2 de bônus em sua Defesa contra ataques à distância.",
+      "descricao_novato": "Um furacão fica girando em volta de você, te protegendo e desviando flechas e tiros."
+    },
+    {
+      "id": "aceleracao",
+      "nome": "Aceleração",
+      "classe": "Entropista",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "O alvo ganha a habilidade de realizar uma ação adicional durante cada um de seus turnos. Termina após o alvo realizar um total de duas ações adicionais.",
+      "descricao_novato": "Deixa um amigo tão rápido que ele ganha ações extras para atacar ou curar nos próximos turnos!"
+    },
+    {
+      "id": "anomalia",
+      "nome": "Anomalia",
+      "classe": "Entropista",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Cena",
+      "ofensivo": true,
+      "descricao_oficial": "Se o alvo sofrer dano de um tipo que ele Absorve ou ao qual é Imune, ele será tratado como Vulnerável a esse dano. Quando isso acontecer, o feitiço termina.",
+      "descricao_novato": "Muda a natureza do monstro: o elemento que curava ele, agora dá o dobro de dano!"
+    },
+    {
+      "id": "arma_negra",
+      "nome": "Arma Negra",
+      "classe": "Entropista",
+      "custo": "10",
+      "alvo": "Uma arma equipada",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Todo dano causado pela arma se torna do tipo escuro. Você pode realizar um ataque livre com ela como parte da mesma ação.",
+      "descricao_novato": "Sua arma ganha o poder da escuridão e você pode dar um ataque de graça na mesma hora!"
+    },
+    {
+      "id": "dissipar",
+      "nome": "Dissipar",
+      "classe": "Entropista",
+      "custo": "10",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": false,
+      "descricao_oficial": "Limpa toda a magia de uma criatura. Se o alvo for afetado por feitiços com duração de Cena, ele não será mais afetado por eles.",
+      "descricao_novato": "Apaga todas as magias que estão afetando o monstro ou o seu amigo."
+    },
+    {
+      "id": "adivinhacao",
+      "nome": "Adivinhação",
+      "classe": "Entropista",
+      "custo": "10",
+      "alvo": "Auto",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Depois que uma criatura realizar um Teste (que não seja desastre ou crítico), você pode forçá-la a rolar novamente ambos os dados. Termina após forçar duas rolagens.",
+      "descricao_novato": "Você vê o futuro e pode obrigar alguém a rolar os dados de novo até duas vezes na cena."
+    },
+    {
+      "id": "drenar_espirito",
+      "nome": "Drenar Espírito",
+      "classe": "Entropista",
+      "custo": "5",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo perde 【HR + 15】 MP. Você recupera MP igual à metade da perda sofrida pelo alvo.",
+      "descricao_novato": "Suga a energia mágica (MP) do monstro e dá pra você."
+    },
+    {
+      "id": "drenar_vigor",
+      "nome": "Drenar Vigor",
+      "classe": "Entropista",
+      "custo": "10",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo sofre 【HR + 15】 dano sombrio. Você recupera HP igual à metade da perda sofrida pelo alvo.",
+      "descricao_novato": "Suga a Vida do monstro e cura você."
+    },
+    {
+      "id": "jogar",
+      "nome": "Jogar",
+      "classe": "Entropista",
+      "custo": "até 20",
+      "alvo": "Especial",
+      "duracao": "Instantâneo",
+      "ofensivo": false,
+      "descricao_oficial": "Role seu dado de Vontade uma vez para cada 10 MP gastos. Mantenha 1 dado. 1: Você perde metade do HP/MP. 2-3: Todos envenenados. 4-6: Todos lentos. 7-8: Até 3 curam 50 HP/Status. 9+: Todos sofrem 30 dano aleatório.",
+      "descricao_novato": "Magia de sorte ou azar! Rola o dado: pode curar todo mundo, dar dano em todo mundo ou até te machucar."
+    },
+    {
+      "id": "espelho",
+      "nome": "Espelho",
+      "classe": "Entropista",
+      "custo": "10",
+      "alvo": "Uma criatura",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Se um feitiço ofensivo for lançado no alvo, a criatura que lançou será o alvo em seu lugar. Quando isso acontecer, o feitiço termina.",
+      "descricao_novato": "Cria um espelho mágico. A próxima magia de ataque que acertar seu amigo vai voltar pro monstro!"
+    },
+    {
+      "id": "omega",
+      "nome": "Ômega",
+      "classe": "Entropista",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo perde uma quantidade de Pontos de Vida igual a 【20 + metade do nível do alvo】.",
+      "descricao_novato": "Um ataque de energia pura que tira Vida do monstro sem ele poder defender."
+    },
+    {
+      "id": "pare",
+      "nome": "Pare",
+      "classe": "Entropista",
+      "custo": "10",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo realizará uma ação a menos no próximo turno (até um mínimo de 0 ações).",
+      "descricao_novato": "Para o tempo do monstro, fazendo ele perder uma ação no próximo turno."
+    },
+    {
+      "id": "umbra",
+      "nome": "Umbra",
+      "classe": "Entropista",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Cada alvo sofre 【HR + 15】 dano sombrio. Oportunidade: Cada alvo atingido sofre fraqueza.",
+      "descricao_novato": "Uma tempestade de sombras. Se der crítico, os monstros ficam fracos."
+    },
+    {
+      "id": "aura",
+      "nome": "Aura",
+      "classe": "Espírita",
+      "custo": "5 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Cada alvo pode tratar sua Defesa Mágica como sendo igual a 12 contra quaisquer efeitos que o tenham como alvo.",
+      "descricao_novato": "Cria um escudo mágico que protege seus amigos contra magias inimigas."
+    },
+    {
+      "id": "despertar",
+      "nome": "Despertar",
+      "classe": "Espírita",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Escolha um Atributo. O alvo trata o Atributo escolhido como se fosse um tamanho de dado maior (até d12).",
+      "descricao_novato": "Desperta o poder oculto de um amigo, deixando ele mais forte, rápido ou inteligente."
+    },
+    {
+      "id": "barreira",
+      "nome": "Barreira",
+      "classe": "Espírita",
+      "custo": "5 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Cada alvo pode tratar sua Defesa como sendo igual a 12 contra quaisquer efeitos que o tenham como alvo.",
+      "descricao_novato": "Cria um escudo de luz que protege seus amigos contra ataques físicos."
+    },
+    {
+      "id": "limpar",
+      "nome": "Limpar",
+      "classe": "Espírita",
+      "custo": "5 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": false,
+      "descricao_oficial": "Cada alvo se recupera de todos os efeitos de status.",
+      "descricao_novato": "Cura veneno, lentidão e qualquer outro efeito ruim dos seus amigos."
+    },
+    {
+      "id": "enfurecer",
+      "nome": "Enfurecer",
+      "classe": "Espírita",
+      "custo": "10",
+      "alvo": "Uma criatura",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "O alvo fica enfurecido e não pode realizar as ações de Guarda ou Feitiço durante seu próximo turno.",
+      "descricao_novato": "Deixa o monstro com tanta raiva que ele esquece como usar magia ou se defender."
+    },
+    {
+      "id": "alucinacao",
+      "nome": "Alucinação",
+      "classe": "Espírita",
+      "custo": "5 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Escolha atordoado ou abalado: você inflige o efeito de status escolhido em cada alvo atingido.",
+      "descricao_novato": "Cria ilusões assustadoras que deixam os monstros confusos ou com medo."
+    },
+    {
+      "id": "curar",
+      "nome": "Curar",
+      "classe": "Espírita",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": false,
+      "descricao_oficial": "Cada alvo recupera 40 HP (50 se você for nível 20+, 60 se nível 40+).",
+      "descricao_novato": "Magia de cura poderosa que recupera muita Vida dos seus amigos."
+    },
+    {
+      "id": "lux",
+      "nome": "Lux",
+      "classe": "Espírita",
+      "custo": "10 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Cada alvo sofre 【HR + 15】 dano leve. Oportunidade: Cada alvo atingido fica atordoado.",
+      "descricao_novato": "Raios de luz sagrada. Se der crítico, deixa os monstros atordoados."
+    },
+    {
+      "id": "misericordia",
+      "nome": "Misericórdia",
+      "classe": "Espírita",
+      "custo": "20",
+      "alvo": "Uma criatura",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Se o alvo for reduzido a 0 HP, ele permanecerá com exatamente 1 HP. Quando isso acontecer, o feitiço termina.",
+      "descricao_novato": "Uma bênção que salva a vida do seu amigo. Se ele fosse desmaiar, ele sobrevive com 1 de Vida."
+    },
+    {
+      "id": "reforcar",
+      "nome": "Reforçar",
+      "classe": "Espírita",
+      "custo": "5 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Escolha atordoado, enfurecido, envenenado, abalado, lento ou fraco. Cada alvo se torna imune ao efeito de status escolhido.",
+      "descricao_novato": "Protege seus amigos para eles não tomarem veneno, lentidão ou outro efeito ruim."
+    },
+    {
+      "id": "arma_da_alma",
+      "nome": "Arma da Alma",
+      "classe": "Espírita",
+      "custo": "10",
+      "alvo": "Uma arma equipada",
+      "duracao": "Cena",
+      "ofensivo": false,
+      "descricao_oficial": "Todo dano causado pela arma se torna do tipo leve. Você pode realizar um ataque livre com ela como parte da mesma ação.",
+      "descricao_novato": "Sua arma ganha o poder da luz sagrada e você pode dar um ataque de graça na mesma hora!"
+    },
+    {
+      "id": "torpor",
+      "nome": "Torpor",
+      "classe": "Espírita",
+      "custo": "5 × T",
+      "alvo": "Até três criaturas",
+      "duracao": "Instantâneo",
+      "ofensivo": true,
+      "descricao_oficial": "Escolha lento ou fraco: você inflige o efeito de status escolhido em cada alvo atingido.",
+      "descricao_novato": "Suga a energia dos monstros, deixando eles lentos ou fracos."
+    }
+  ],
+"equipamentos": {
+    "armas": [
+      {
+        "id": "cajado",
+        "nome": "Cajado",
+        "custo": 100,
+        "categoria": "arcana",
+        "maos": 2,
+        "marcial": false,
+        "precisao_atributos": ["WLP", "WLP"],
+        "precisao_bonus": 0,
+        "dano_bonus": 6,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma básica de duas mãos. Sem qualidade especial.",
+        "descricao_novato": "Um cajado mágico simples. Usa sua Força de Vontade para acertar os inimigos."
+      },
+      {
+        "id": "tomo",
+        "nome": "Tomo",
+        "custo": 100,
+        "categoria": "arcana",
+        "maos": 2,
+        "marcial": false,
+        "precisao_atributos": ["INS", "INS"],
+        "precisao_bonus": 0,
+        "dano_bonus": 6,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma básica de duas mãos. Sem qualidade especial.",
+        "descricao_novato": "Um livro de magias pesado. Usa sua Inteligência (Intuição) para bater ou lançar feitiços."
+      },
+      {
+        "id": "besta",
+        "nome": "Besta",
+        "custo": 150,
+        "categoria": "arco",
+        "maos": 2,
+        "marcial": false,
+        "precisao_atributos": ["DEX", "INS"],
+        "precisao_bonus": 0,
+        "dano_bonus": 8,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma de longo alcance de duas mãos.",
+        "descricao_novato": "Atira virotes de longe. Usa sua mira (Destreza) e cálculo (Intuição)."
+      },
+      {
+        "id": "arco_curto",
+        "nome": "Arco Curto",
+        "custo": 200,
+        "categoria": "arco",
+        "maos": 2,
+        "marcial": false,
+        "precisao_atributos": ["DEX", "DEX"],
+        "precisao_bonus": 0,
+        "dano_bonus": 8,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma de longo alcance de duas mãos.",
+        "descricao_novato": "Um arco rápido. Depende totalmente da sua agilidade (Destreza) para acertar."
+      },
+      {
+        "id": "ataque_desarmado",
+        "nome": "Ataque Desarmado",
+        "custo": 0,
+        "categoria": "briga",
+        "maos": 1,
+        "marcial": false,
+        "precisao_atributos": ["DEX", "MIG"],
+        "precisao_bonus": 0,
+        "dano_bonus": 0,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Equipado automaticamente em cada espaço de mão vazio.",
+        "descricao_novato": "Seus próprios punhos e chutes! Grátis e sempre pronto para usar."
+      },
+      {
+        "id": "soco_ingles",
+        "nome": "Soco Inglês",
+        "custo": 150,
+        "categoria": "briga",
+        "maos": 1,
+        "marcial": false,
+        "precisao_atributos": ["DEX", "MIG"],
+        "precisao_bonus": 0,
+        "dano_bonus": 6,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma de briga de uma mão.",
+        "descricao_novato": "Uma soqueira de ferro para deixar seus socos muito mais fortes."
+      },
+      {
+        "id": "adaga_de_aco",
+        "nome": "Adaga de Aço",
+        "custo": 150,
+        "categoria": "adaga",
+        "maos": 1,
+        "marcial": false,
+        "precisao_atributos": ["DEX", "INS"],
+        "precisao_bonus": 1,
+        "dano_bonus": 4,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Concede +1 na Verificação de Precisão.",
+        "descricao_novato": "Uma faquinha rápida e fácil de usar. Dá um bônus de +1 para acertar o monstro!"
+      },
+      {
+        "id": "pistola",
+        "nome": "Pistola",
+        "custo": 250,
+        "categoria": "arma_de_fogo",
+        "maos": 1,
+        "marcial": true,
+        "precisao_atributos": ["DEX", "INS"],
+        "precisao_bonus": 0,
+        "dano_bonus": 8,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma marcial de longo alcance de uma mão.",
+        "descricao_novato": "Uma arma de fogo de uma mão. Só quem tem treinamento militar (Marcial) sabe usar direito."
+      },
+      {
+        "id": "machado_de_guerra",
+        "nome": "Machado de Guerra",
+        "custo": 250,
+        "categoria": "pesada",
+        "maos": 2,
+        "marcial": true,
+        "precisao_atributos": ["MIG", "MIG"],
+        "precisao_bonus": 0,
+        "dano_bonus": 14,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma marcial pesada de duas mãos.",
+        "descricao_novato": "Um machado gigante e brutal. Causa muito dano, mas exige muita força bruta (Potência)."
+      },
+      {
+        "id": "lanca_pesada",
+        "nome": "Lança Pesada",
+        "custo": 200,
+        "categoria": "lanca",
+        "maos": 2,
+        "marcial": true,
+        "precisao_atributos": ["DEX", "MIG"],
+        "precisao_bonus": 0,
+        "dano_bonus": 12,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Arma marcial de lança de duas mãos.",
+        "descricao_novato": "Uma lança longa e perigosa. Ótima para manter os inimigos afastados."
+      },
+      {
+        "id": "espada_de_bronze",
+        "nome": "Espada de Bronze",
+        "custo": 200,
+        "categoria": "espada",
+        "maos": 1,
+        "marcial": true,
+        "precisao_atributos": ["DEX", "MIG"],
+        "precisao_bonus": 1,
+        "dano_bonus": 6,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Concede +1 na Verificação de Precisão.",
+        "descricao_novato": "A espada clássica do herói. Dá +1 de bônus para acertar e deixa uma mão livre para o escudo."
+      },
+      {
+        "id": "espada_grande",
+        "nome": "Espada Grande",
+        "custo": 200,
+        "categoria": "espada",
+        "maos": 2,
+        "marcial": true,
+        "precisao_atributos": ["DEX", "MIG"],
+        "precisao_bonus": 1,
+        "dano_bonus": 10,
+        "dano_tipo": "físico",
+        "descricao_oficial": "Concede +1 na Verificação de Precisão.",
+        "descricao_novato": "Uma espada enorme de duas mãos. Bate forte e ainda te dá +1 para acertar."
+      }
+    ],
+    "armaduras": [
+      {
+        "id": "sem_armadura",
+        "nome": "Sem Armadura",
+        "custo": 0,
+        "marcial": false,
+        "defesa_base": "DEX",
+        "defesa_bonus": 0,
+        "defesa_magica_base": "INS",
+        "defesa_magica_bonus": 0,
+        "penalidade_iniciativa": 0,
+        "descricao_oficial": "Roupas normais.",
+        "descricao_novato": "Sua roupa do dia a dia. Você depende só da sua agilidade para desviar."
+      },
+      {
+        "id": "traje_de_viagem",
+        "nome": "Traje de Viagem",
+        "custo": 100,
+        "marcial": false,
+        "defesa_base": "DEX",
+        "defesa_bonus": 1,
+        "defesa_magica_base": "INS",
+        "defesa_magica_bonus": 1,
+        "penalidade_iniciativa": -1,
+        "descricao_oficial": "Armadura leve básica.",
+        "descricao_novato": "Roupas de couro reforçado. Te protege um pouco mais, mas te deixa um tiquinho mais lento."
+      },
+      {
+        "id": "manto_sabio",
+        "nome": "Manto Sábio",
+        "custo": 200,
+        "marcial": false,
+        "defesa_base": "DEX",
+        "defesa_bonus": 1,
+        "defesa_magica_base": "INS",
+        "defesa_magica_bonus": 2,
+        "penalidade_iniciativa": -2,
+        "descricao_oficial": "Armadura leve focada em defesa mágica.",
+        "descricao_novato": "Uma capa mágica que te protege muito bem contra feitiços, mas atrapalha sua velocidade."
+      },
+      {
+        "id": "brigandina",
+        "nome": "Brigandina",
+        "custo": 150,
+        "marcial": true,
+        "defesa_base": 10,
+        "defesa_bonus": 0,
+        "defesa_magica_base": "INS",
+        "defesa_magica_bonus": 0,
+        "penalidade_iniciativa": -2,
+        "descricao_oficial": "Armadura marcial. Fixa a Defesa em 10.",
+        "descricao_novato": "Uma armadura de metal leve. Sua defesa física fica travada no valor 10, não importa sua agilidade."
+      },
+      {
+        "id": "placa_de_aco",
+        "nome": "Placa de Aço",
+        "custo": 300,
+        "marcial": true,
+        "defesa_base": 12,
+        "defesa_bonus": 0,
+        "defesa_magica_base": "INS",
+        "defesa_magica_bonus": 0,
+        "penalidade_iniciativa": -4,
+        "descricao_oficial": "Armadura marcial pesada. Fixa a Defesa em 12.",
+        "descricao_novato": "A armadura de um cavaleiro! Te protege muito (Defesa 12), mas te deixa super pesado e lento."
+      }
+    ],
+    "escudos": [
+      {
+        "id": "escudo_de_bronze",
+        "nome": "Escudo de Bronze",
+        "custo": 100,
+        "marcial": false,
+        "defesa_bonus": 2,
+        "defesa_magica_bonus": 0,
+        "penalidade_iniciativa": 0,
+        "descricao_oficial": "Aumenta a Defesa em +2.",
+        "descricao_novato": "Um escudo simples que bloqueia ataques físicos, somando +2 na sua Defesa."
+      },
+      {
+        "id": "escudo_runico",
+        "nome": "Escudo Rúnico",
+        "custo": 150,
+        "marcial": true,
+        "defesa_bonus": 2,
+        "defesa_magica_bonus": 2,
+        "penalidade_iniciativa": 0,
+        "descricao_oficial": "Aumenta a Defesa e a Defesa Mágica em +2.",
+        "descricao_novato": "Um escudo mágico poderoso! Ele bloqueia tanto espadas quanto feitiços, dando +2 nas duas defesas."
+      }
+    ],
+    "acessorios": [
+      {
+        "id": "elmo_com_crista",
+        "nome": "Elmo com Crista",
+        "custo": 1000,
+        "descricao_oficial": "Você ganha um bônus de +1 em seus testes de precisão.",
+        "descricao_novato": "Um capacete de herói que melhora sua visão de combate, dando +1 para acertar ataques."
+      },
+      {
+        "id": "chapeu_amarelo_pontudo",
+        "nome": "Chapéu Amarelo Pontudo",
+        "custo": 1000,
+        "descricao_oficial": "Você ganha um bônus de +1 em seus Testes de Magia.",
+        "descricao_novato": "O chapéu clássico de bruxo! Ele foca sua mente e dá +1 para acertar magias."
+      },
+      {
+        "id": "luvas_peles_multigroa",
+        "nome": "Luvas de Pele Multigroa",
+        "custo": 2000,
+        "descricao_oficial": "Você está imune a todos os efeitos de status.",
+        "descricao_novato": "Luvas mágicas incríveis que não deixam você ser envenenado, atordoado ou ficar lento nunca!"
+      }
+    ]
+  },
+"regras_npc": {
+    "especies": [
+      {
+        "id": "fera",
+        "nome": "Fera",
+        "habilidades_iniciais": 4,
+        "regras_oficial": "Bestas não podem adquirir a habilidade Usar Equipamento.",
+        "regras_novato": "Animais selvagens não sabem usar armas, armaduras ou itens."
+      },
+      {
+        "id": "construto",
+        "nome": "Construto",
+        "habilidades_iniciais": 2,
+        "regras_oficial": "Imunes a danos venenosos, Resistentes a danos terrestres e imunes ao status envenenamento.",
+        "regras_novato": "Robôs e golens não podem ser envenenados e tomam menos dano de ataques de terra."
+      },
+      {
+        "id": "demonio",
+        "nome": "Demônio",
+        "habilidades_iniciais": 3,
+        "regras_oficial": "Demônios são Resistentes a dois tipos de dano à sua escolha.",
+        "regras_novato": "Demônios são criaturas das trevas que tomam metade do dano de dois elementos que o Mestre escolher."
+      },
+      {
+        "id": "elemental",
+        "nome": "Elemental",
+        "habilidades_iniciais": 2,
+        "regras_oficial": "Imunes a dano de veneno, imunes a um segundo tipo de dano de sua escolha e imunes a envenenamento.",
+        "regras_novato": "Espíritos da natureza não sofrem com veneno e são totalmente imunes a mais um elemento (como fogo ou gelo)."
+      },
+      {
+        "id": "humanoide",
+        "nome": "Humanóide",
+        "habilidades_iniciais": 3,
+        "regras_oficial": "Humanóides sempre ganham a Habilidade Usar Equipamento gratuitamente.",
+        "regras_novato": "Pessoas, bandidos e soldados. Eles podem usar espadas, escudos e armaduras como os jogadores."
+      },
+      {
+        "id": "monstro",
+        "nome": "Monstro",
+        "habilidades_iniciais": 4,
+        "regras_oficial": "Monstros não têm regras especiais.",
+        "regras_novato": "Criaturas mágicas bizarras. Elas não têm regras fixas, o Mestre pode inventar o que quiser para elas."
+      },
+      {
+        "id": "planta",
+        "nome": "Planta",
+        "habilidades_iniciais": 3,
+        "regras_oficial": "Imunes a atordoamento, abalado e enfurecido, e vulneráveis a um dano (ar, raio, fogo ou gelo).",
+        "regras_novato": "Plantas monstros não sentem medo nem raiva, mas tomam o dobro de dano de um elemento específico."
+      },
+      {
+        "id": "morto_vivo",
+        "nome": "Morto-Vivo",
+        "habilidades_iniciais": 2,
+        "regras_oficial": "Imunes a danos sombrios e venenosos, imunes a envenenados e vulneráveis a danos leves. Efeitos de cura causam dano a eles.",
+        "regras_novato": "Zumbis e esqueletos. Veneno e escuridão não machucam eles, mas magia de Luz dá o dobro de dano. Se você tentar curar um morto-vivo, ele toma dano!"
+      }
+    ],
+    "habilidades_comuns": [
+      {
+        "id": "voo",
+        "nome": "Voo",
+        "descricao_oficial": "Criaturas no solo não podem atingir seu NPC com ataques corpo a corpo enquanto seu NPC estiver no ar. Se sofrer dano de Vulnerabilidade, é forçado a pousar.",
+        "descricao_novato": "O monstro voa! Quem usa espada não consegue bater nele, a menos que ele tome um dano que seja a fraqueza dele e caia no chão."
+      },
+      {
+        "id": "ato_final",
+        "nome": "Ato Final",
+        "descricao_oficial": "Quando reduzido a 0 HP, seu NPC pode realizar imediatamente algum tipo de ação ou ataque especial (ex: autodestruição).",
+        "descricao_novato": "Quando o monstro morre, ele dá um último golpe surpresa ou explode antes de cair!"
+      }
+    ]
+  },
+  "bestiario": [
+    {
+      "id": "rato_gigante",
+      "nome": "Rato Gigante",
+      "nivel": 5,
+      "especie": "Fera",
+      "hp_max": 60,
+      "mp_max": 45,
+      "iniciativa": 14,
+      "defesa": 10,
+      "defesa_magica": 10,
+      "atributos": {"DEX": "d12", "INS": "d8", "MIG": "d6", "WLP": "d6"},
+      "ataques": [
+        {
+          "nome": "Mordida Ruim",
+          "precisao": "DEX + MIG",
+          "dano": "HR + 5 físico",
+          "efeito": "O alvo sofre envenenamento."
+        }
+      ],
+      "fraquezas": ["fogo"],
+      "resistencias": [],
+      "imunidades": [],
+      "absorcoes": [],
+      "dica_mestre_novato": "Ratos gigantes são ótimos para a primeira batalha do grupo. Eles são rápidos, mas fogem ou tomam muito dano se os jogadores usarem fogo."
+    },
+    {
+      "id": "guarda",
+      "nome": "Guarda",
+      "nivel": 5,
+      "especie": "Humanóide",
+      "hp_max": 60,
+      "mp_max": 45,
+      "iniciativa": 5,
+      "defesa": 11,
+      "defesa_magica": 10,
+      "atributos": {"DEX": "d8", "INS": "d8", "MIG": "d8", "WLP": "d8"},
+      "ataques": [
+        {
+          "nome": "Lança Pesada",
+          "precisao": "DEX + MIG",
+          "dano": "HR + 12 físico",
+          "efeito": "Nenhum."
+        }
+      ],
+      "fraquezas": [],
+      "resistencias": [],
+      "imunidades": [],
+      "absorcoes": [],
+      "dica_mestre_novato": "Guardas lutam em grupo. Use a habilidade deles de proteger uns aos outros para ensinar aos jogadores que eles precisam de estratégia para quebrar a defesa inimiga."
+    },
+    {
+      "id": "zumbi",
+      "nome": "Zumbi",
+      "nivel": 5,
+      "especie": "Morto-Vivo",
+      "hp_max": 70,
+      "mp_max": 45,
+      "iniciativa": 6,
+      "defesa": 10,
+      "defesa_magica": 8,
+      "atributos": {"DEX": "d6", "INS": "d6", "MIG": "d12", "WLP": "d8"},
+      "ataques": [
+        {
+          "nome": "Mordida Voraz",
+          "precisao": "DEX + MIG",
+          "dano": "HR + 5 escuro",
+          "efeito": "O alvo sofre fraqueza."
+        }
+      ],
+      "fraquezas": ["luz"],
+      "resistencias": [],
+      "imunidades": ["escuro", "veneno"],
+      "absorcoes": [],
+      "dica_mestre_novato": "Zumbis são lentos, mas batem forte. Lembre os jogadores que magias de cura dão dano neles! Isso recompensa quem joga de Espírita."
+    }
+  ]
+}
